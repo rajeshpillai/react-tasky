@@ -9,7 +9,9 @@ class App extends Component {
     tasks: [
       {id: 1, title: "Code a react app", completed: false },
       {id: 2, title: "Code a node app", completed: true },
-      {id: 3, title: "Code a full stack app", completed: false },
+      {id: 3, title: "Code a full stack app", completed: true },
+      {id: 4, title: "Learn devops", completed: false },
+      {id: 5, title: "Learn cloud computing", completed: false },
     ]
   }
 
@@ -21,12 +23,24 @@ class App extends Component {
     })
   }
 
+  onDeleteTask = (taskId) => {
+    var tasks = this.state.tasks.filter((task) => {
+      return task.id !== taskId;
+    });
+
+    this.setState({
+      tasks
+    });
+  }
+
   render() {
     return (
       <div className="App">
           <Header />
           <TaskForm onSubmit={this.onTaskSubmit} />
-          <TaskList tasks= {this.state.tasks} />
+          <TaskList tasks= {this.state.tasks}
+                   onDeleteTask={this.onDeleteTask}
+          />
 
       </div>
     );

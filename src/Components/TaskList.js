@@ -5,7 +5,7 @@ var taskList = (props) => {
         return(
         <li key={task.id}>
             {task.title}
-            <a href="#" className="remove-icon">&#x1f5d1;</a>
+            <a href="#" onClick={() => {props.onDeleteTask(task.id)}} className="remove-icon">&#x1f5d1;</a>
         </li>
         );
     });
