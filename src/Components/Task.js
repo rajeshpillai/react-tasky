@@ -2,7 +2,7 @@ import React from 'react';
 
 export default (props) => {
     var {task} = props;
-    var completedClass = task.completed ? "task-completed": "";
+    var completedClass = task.completed ? "task task-completed": "task";
     var checked  = task.completed ? "checked" : "";
     var editText = task.edit ? "close" : "edit";
     
@@ -14,7 +14,9 @@ export default (props) => {
                     onChange={()=>{props.onEditTask(task.id,this.editTaskInput)}} 
                     value={task.title} /> 
                 :
-                <header className="task-title">{task.title}</header>
+                <header className="task-title">{task.title}
+                    <span onClick={()=> {props.onShowTaskModal(task.id)}}>&#128470;</span>
+                </header>
             }
             <div className="task-body">
                 <a href="#" 

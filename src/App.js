@@ -4,6 +4,8 @@ import Header from './Components/Header';
 import TaskForm from './Components/TaskForm';
 
 import Dashboard from './Components/Dashboard';
+import Modal from './Components/Modal';
+import Task from './Components/Task';
 
 class App extends Component {
   state = {
@@ -31,6 +33,22 @@ class App extends Component {
       tasks
     });
 
+  }
+
+
+  onShowTaskModal = (taskId) => {
+    this.toggleModal(taskId);
+  }
+
+  toggleModal = (taskId) => { 
+    var task = this.state.tasks.filter((task) => {
+      if (task.id === taskId) return task;
+    })[0];
+
+    this.setState({
+      isOpen: !this.state.isOpen,
+      task: task
+    });
   }
 
   onTaskSubmit = (task) => {
@@ -63,6 +81,7 @@ class App extends Component {
     });
   }
 
+  
   onEditTask = (taskId, editInput) => {
     var tasks = this.state.tasks.map((task) => {
       if (task.id === taskId) {
@@ -104,6 +123,7 @@ class App extends Component {
   }
 
   render() {
+    var task = this.state.task;
     return (
       <div className="App">
           <Header />
@@ -115,7 +135,20 @@ class App extends Component {
                         onToggleEdit={this.onToggleEdit}
                         onEditTask={this.onEditTask}
                         onEditTaskDesc= {this.onEditTaskDesc}
+                        onShowTaskModal={this.onShowTaskModal}
           />
+
+          {task && 
+            <Modal show={this.state.isOpen} onClose={this.toggleModal}>
+             <Task  task={task}
+                onDeleteTask={this.onDeleteTask}
+                onToggleComplete={this.onToggleComplete}
+                onToggleEdit={this.onToggleEdit}
+                onEditTask={this.onEditTask}
+                onEditTaskDesc= {this.onEditTaskDesc}
+             />
+            </Modal>  
+          }
 
       </div>
     );
