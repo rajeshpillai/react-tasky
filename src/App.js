@@ -2,22 +2,28 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Components/Header';
 import TaskForm from './Components/TaskForm';
-import TaskList from './Components/TaskList';
+
+import Dashboard from './Components/Dashboard';
 
 class App extends Component {
   state = {
     tasks: [
-      {id: 1, title: "Code a react app", completed: false },
-      {id: 2, title: "Code a node app", completed: true },
-      {id: 3, title: "Code a full stack app", completed: true },
-      {id: 4, title: "Learn devops", completed: false },
-      {id: 5, title: "Learn cloud computing", completed: false },
+      {id: 1, title: "Code a react app", completed: false, category: "inprogress" },
+      {id: 2, title: "Code a node app", completed: true, category: "inprogress" },
+      {id: 3, title: "Code a full stack app", completed: true, category: "todo" },
+      {id: 4, title: "Learn devops", completed: false, category: "todo" },
+      {id: 5, title: "Learn cloud computing", completed: true, category: "completed" },
+    ],
+    categories: [
+      "inprogress",
+      "todo",
+      "completed"
     ]
   }
 
   onTaskSubmit = (task) => {
     task.id = this.state.tasks.length + 1;
-
+    task.category = "todo";
     this.setState({
       tasks: [task, ...this.state.tasks]
     })
@@ -75,11 +81,12 @@ class App extends Component {
       <div className="App">
           <Header />
           <TaskForm onSubmit={this.onTaskSubmit} />
-          <TaskList tasks= {this.state.tasks}
-                    onDeleteTask={this.onDeleteTask}
-                    onToggleComplete={this.onToggleComplete}
-                    onToggleEdit={this.onToggleEdit}
-                    onEditTask={this.onEditTask}
+          <Dashboard categories = {this.state.categories} 
+                 tasks= {this.state.tasks}
+                        onDeleteTask={this.onDeleteTask}
+                        onToggleComplete={this.onToggleComplete}
+                        onToggleEdit={this.onToggleEdit}
+                        onEditTask={this.onEditTask}
           />
 
       </div>

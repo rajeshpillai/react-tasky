@@ -2,8 +2,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+
 }
 .App {
+  width: 80%;
+  margin: auto;
 }
 .remove-icon {
   color: red;
@@ -13,4 +16,12 @@ body {
 
 .task-completed{
   text-decoration: line-through;
+}
+
+.category {
+  width: 30%;
+  float: left;
+  border: 1px lightgray dashed;
+  height: 80vh;
+  padding: 10px;
 }
