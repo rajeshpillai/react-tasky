@@ -21,6 +21,18 @@ class App extends Component {
     ]
   }
 
+  componentDidMount() {
+    var tasks = this.state.tasks;
+    for(let i = 0; i < tasks.length; i++) {
+      tasks[i].description = "Some random text " + i;
+    }
+
+    this.setState({
+      tasks
+    });
+
+  }
+
   onTaskSubmit = (task) => {
     task.id = this.state.tasks.length + 1;
     task.category = "todo";
