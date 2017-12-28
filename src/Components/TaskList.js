@@ -4,6 +4,7 @@ var taskList = (props) => {
     var taskList =  props.tasks.map((task) => {
         var completedClass = task.completed ? "task-completed": "";
         var checked  = task.completed ? "checked" : "";
+        var editText = task.edit ? "close" : "edit";
         return(
         <li key={task.id} className={completedClass}>
             {task.edit 
@@ -21,7 +22,7 @@ var taskList = (props) => {
            <input type="checkbox" checked={checked}
              onClick={() => {props.onToggleComplete(task.id)}} />
 
-           <input type="button" value="edit"
+           <input type="button" value={editText}
              onClick={() => {props.onToggleEdit(task.id, task.title)}} />
         </li>
         );
