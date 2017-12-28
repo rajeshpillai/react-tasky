@@ -12,11 +12,19 @@ class App extends Component {
       {id: 3, title: "Code a full stack app", completed: false },
     ]
   }
+
+  onTaskSubmit = (task) => {
+    this.setState({
+      ...this.state,
+      tasks: [task, ...this.state.tasks]
+    })
+  }
+
   render() {
     return (
       <div className="App">
           <Header />
-          <TaskForm />
+          <TaskForm onSubmit={this.onTaskSubmit} />
           <TaskList tasks= {this.state.tasks} />
 
       </div>
