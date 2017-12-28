@@ -32,7 +32,7 @@ class App extends Component {
       tasks
     });
   }
-  onToggle = (taskId) => {
+  onToggleComplete = (taskId) => {
     var tasks = this.state.tasks.map((task) => {
        if (task.id === taskId) {
          task.completed = !task.completed;
@@ -52,7 +52,7 @@ class App extends Component {
           <TaskForm onSubmit={this.onTaskSubmit} />
           <TaskList tasks= {this.state.tasks}
                     onDeleteTask={this.onDeleteTask}
-                    onToggle={this.onToggle}
+                    onToggleComplete={this.onToggleComplete}
           />
 
       </div>
