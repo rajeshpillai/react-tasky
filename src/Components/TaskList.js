@@ -6,12 +6,10 @@ var taskList = (props) => {
            <Task {...props} task={task} />
         );
     });
-
     return (
         <div>
-            <ul>{taskList}</ul>
+            <ul className="task-list">{taskList}</ul>
         </div>
     );
 }
-
 export default taskList;

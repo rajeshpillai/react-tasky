@@ -14,19 +14,21 @@ export default (props) => {
                     onChange={()=>{props.onEditTask(task.id,this.editTaskInput)}} 
                     value={task.title} /> 
                 :
-                task.title
+                <header className="task-title">{task.title}</header>
             }
-            <a href="#" 
-                onClick={() => {props.onDeleteTask(task.id)}} 
-                className="remove-icon">&#x1f5d1;</a>
+            <div className="task-body">
+                <a href="#" 
+                    onClick={() => {props.onDeleteTask(task.id)}} 
+                    className="remove-icon">&#x1f5d1;</a>
 
-        <textarea value={task.description} />
-        
-        <input type="checkbox" checked={checked}
-            onClick={() => {props.onToggleComplete(task.id)}} />
+                <textarea value={task.description} />
+                
+                <input type="checkbox" checked={checked}
+                    onClick={() => {props.onToggleComplete(task.id)}} />
 
-        <input type="button" value={editText}
-            onClick={() => {props.onToggleEdit(task.id)}} />
+                <input type="button" value={editText}
+                    onClick={() => {props.onToggleEdit(task.id)}} />
+            </div>
         </li>
     );
 }

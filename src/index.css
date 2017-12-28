@@ -25,3 +25,23 @@ body {
   height: 80vh;
   padding: 10px;
 }
+
+.task-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.task-list > li {
+  border: 1px solid wheat;
+  padding: 5px;
+}
+
+.task-title {
+  background-color: gainsboro;
+  cursor: pointer;
+}
+
+.task-body{
+  padding: 5px;
+}
