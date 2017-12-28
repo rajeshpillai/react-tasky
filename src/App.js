@@ -75,6 +75,21 @@ class App extends Component {
       tasks
     });
   }
+
+  onEditTaskDesc = (taskId, desc) => {
+    var tasks = this.state.tasks.map((task) => {
+      if (task.id === taskId) {
+        task.description = desc;
+      }
+      return task;
+    });
+
+    this.setState({
+      tasks
+    });
+  
+  }
+
   onToggleEdit = (taskId) => {
     var tasks = this.state.tasks.map((task) => {
        if (task.id === taskId) {
@@ -99,6 +114,7 @@ class App extends Component {
                         onToggleComplete={this.onToggleComplete}
                         onToggleEdit={this.onToggleEdit}
                         onEditTask={this.onEditTask}
+                        onEditTaskDesc= {this.onEditTaskDesc}
           />
 
       </div>

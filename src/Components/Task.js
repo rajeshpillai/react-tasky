@@ -21,7 +21,8 @@ export default (props) => {
                     onClick={() => {props.onDeleteTask(task.id)}} 
                     className="remove-icon">&#x1f5d1;</a>
 
-                <textarea value={task.description} />
+                <textarea value={task.description}
+                    onChange={(e)=>{props.onEditTaskDesc(task.id,e.target.value)}}  />
                 
                 <input type="checkbox" checked={checked}
                     onClick={() => {props.onToggleComplete(task.id)}} />

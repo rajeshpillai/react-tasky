@@ -6,7 +6,7 @@ export default class Dashboard extends React.Component {
         super(props);
     }
     render() {
-        var {categories, tasks, onDeleteTask, onToggleComplete, onEditTask, onToggleEdit} = this.props;
+        var {categories, tasks, onDeleteTask,onEditTaskDesc, onToggleComplete, onEditTask, onToggleEdit} = this.props;
         var taskLists = categories.map((cat) => {
             var filteredTasks = tasks.filter((task) => {
                 if(task.category == cat) return task;
@@ -18,6 +18,7 @@ export default class Dashboard extends React.Component {
                         onDeleteTask={onDeleteTask}
                         onToggleComplete={onToggleComplete}
                         onToggleEdit={onToggleEdit}
+                        onEditTaskDesc={onEditTaskDesc}
                         onEditTask={onEditTask}
                     />
                 </div>
