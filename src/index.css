@@ -39,6 +39,8 @@ body {
 
 .task {
   list-style-type: none;
+  margin: 5px;
+  padding: 5px;
 }
 .task-title {
   background-color: gainsboro;
