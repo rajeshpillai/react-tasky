@@ -13,9 +13,9 @@ export default class TaskForm extends React.Component {
 
     onTitleChange = (e) => {
         this.setState({
-            ...this.state,
             task: {
-                title: e.target.value
+                title: e.target.value,
+                completed: false
             }
         })
     }

@@ -14,6 +14,8 @@ class App extends Component {
   }
 
   onTaskSubmit = (task) => {
+    task.id = this.state.tasks.length + 1;
+    
     this.setState({
       ...this.state,
       tasks: [task, ...this.state.tasks]
