@@ -3,7 +3,6 @@ import React from 'react';
 export default class TaskForm extends React.Component {
     constructor() {
         super();
-        this.onTitleChange = this.onTitleChange.bind(this);
     }
     state = {
         task: {
@@ -12,7 +11,7 @@ export default class TaskForm extends React.Component {
         }
     }
 
-    onTitleChange(e) {
+    onTitleChange = (e) => {
         this.setState({
             ...this.state,
             task: {
