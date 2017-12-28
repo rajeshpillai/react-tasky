@@ -6,15 +6,18 @@ import TaskList from './Components/TaskList';
 
 class App extends Component {
   state = {
-    tasks: [],
-
+    tasks: [
+      {id: 1, title: "Code a react app", completed: false },
+      {id: 2, title: "Code a node app", completed: true },
+      {id: 3, title: "Code a full stack app", completed: false },
+    ]
   }
   render() {
     return (
       <div className="App">
           <Header />
           <TaskForm />
-          <TaskList />
+          <TaskList tasks= {this.state.tasks} />
 
       </div>
     );

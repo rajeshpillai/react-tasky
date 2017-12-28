@@ -1,7 +1,21 @@
 import React from 'react';
 
-export default () => {
+var taskList = (props) => {
+    var taskList =  props.tasks.map((task) => {
+        return(
+        <li>
+            {task.title}
+            <a href="#" className="remove-icon">&#x1f5d1;</a>
+        </li>
+        );
+    });
+
     return (
-        <h2>Task List</h2>
+        <div>
+            <h2>Task List</h2>
+            <ul>{taskList}</ul>
+        </div>
     );
 }
+
+export default taskList;
