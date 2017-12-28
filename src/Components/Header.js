@@ -3,6 +3,9 @@ import React from 'react';
 
 export default () => {
     return (
-        <h2>Tasky</h2>
+        <React.Fragment>
+            <h2>Tasky</h2>
+            <hr/>
+        </React.Fragment>
     );
 }
