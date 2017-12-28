@@ -17,13 +17,21 @@ export default class TaskForm extends React.Component {
                 title: e.target.value,
                 completed: false
             }
-        })
+        });
     }
 
     onSubmit = (e) => {
         e.preventDefault();
         var {onSubmit} = this.props;
         onSubmit(this.state.task);
+
+        this.setState({
+            task: {
+                ...this.state.task,
+                title: ''                
+            }
+        });
+        this.taskInput.focus();
     }
 
     render() {
@@ -33,6 +41,7 @@ export default class TaskForm extends React.Component {
                 <h2>Form</h2>
                 <form onSubmit={this.onSubmit}>
                     <input type="text" 
+                        ref = {(taskInput) => this.taskInput = taskInput}
                         placeholder="enter task"
                         value = {title}
                         onChange = {this.onTitleChange}
