@@ -14,8 +14,8 @@ export default (props) => {
                     onChange={()=>{props.onEditTask(task.id,this.editTaskInput)}} 
                     value={task.title} /> 
                 :
-                <header className="task-title">{task.title}
-                    <span onClick={()=> {props.onShowTaskModal(task.id)}}>&#128470;</span>
+                <header style={{position: "relative"}} className="task-title">{task.title}
+                    <span style={{position:"absolute", right: 0, marginTop:"-4px"}} onClick={()=> {props.onShowTaskModal(task.id)}}>&#128470;</span>
                 </header>
             }
             <div className="task-body">
