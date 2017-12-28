@@ -3,7 +3,7 @@ import React from 'react';
 var taskList = (props) => {
     var taskList =  props.tasks.map((task) => {
         return(
-        <li>
+        <li key={task.id}>
             {task.title}
             <a href="#" className="remove-icon">&#x1f5d1;</a>
         </li>
