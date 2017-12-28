@@ -3,6 +3,7 @@ import React from 'react';
 var taskList = (props) => {
     var taskList =  props.tasks.map((task) => {
         var completed = task.completed ? "task-completed": "";
+        var checked  = task.completed ? "checked" : "";
         return(
         <li key={task.id} className={completed}>
             {task.title}
@@ -10,12 +11,8 @@ var taskList = (props) => {
                 onClick={() => {props.onDeleteTask(task.id)}} 
                 className="remove-icon">&#x1f5d1;</a>
 
-            {task.completed ?  <input type="checkbox" checked
+           <input type="checkbox" checked={checked}
                    onClick={() => {props.onToggle(task.id)}} />
-                   :
-                <input type="checkbox" value={task.completed}
-                   onClick={() => {props.onToggle(task.id)}} />
-            }
            
         </li>
         );
