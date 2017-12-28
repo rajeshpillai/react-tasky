@@ -23,7 +23,7 @@ var taskList = (props) => {
              onClick={() => {props.onToggleComplete(task.id)}} />
 
            <input type="button" value={editText}
-             onClick={() => {props.onToggleEdit(task.id, task.title)}} />
+             onClick={() => {props.onToggleEdit(task.id)}} />
         </li>
         );
     });

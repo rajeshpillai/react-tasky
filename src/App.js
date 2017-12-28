@@ -57,7 +57,7 @@ class App extends Component {
       tasks
     });
   }
-  onToggleEdit = (taskId, title) => {
+  onToggleEdit = (taskId) => {
     var tasks = this.state.tasks.map((task) => {
        if (task.id === taskId) {
          task.edit = !task.edit;
