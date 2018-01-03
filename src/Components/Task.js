@@ -17,7 +17,6 @@ const Task = (props) => {
               {edit ? <input type="text" title="enter to submit"  
                     onChange={(e)=>{props.onEditSubTask(e,subTask.id)}} 
                     onKeyPress={(e) => {
-                        console.log(e.which, e.keyCode);
                         if (e.which === 13) {
                             console.log("enter..");
                             props.onToggleNewSubTask(task.id, subTask.id)
@@ -77,15 +76,13 @@ const Task = (props) => {
                 <input type="checkbox" checked={checked}
                     onChange={() => {props.onToggleComplete(task.id)}} />
 
-              
-
                 <input type="button" value="Add subtask"
                     onClick={() => {props.onToggleNewSubTask(task.id)}} />
             </div>
             <div className="sub-tasks">
-                <ul>
+                <ol>
                  { subTasksView }
-                </ul>
+                </ol>
             </div>
 
             <footer className="task-footer">created by {user.name}</footer>
