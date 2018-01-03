@@ -13,8 +13,8 @@ export default (props) => {
         <li  key={task.id}
             data-id={task.id}
             draggable="true"
-            onDragStart={(e) => props.onDragStart(e, task.id)}
-            onDrag={(e) => props.onDrag(e, task.id)}
+            onDragStart={(e) => props.onDragStart && props.onDragStart(e, task.id)}
+            onDrag={(e) => props.onDrag && props.onDrag(e, task.id)}
             >
             {task.edit 
                 ? <input type="text" 
