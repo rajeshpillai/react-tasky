@@ -34,7 +34,7 @@ export default class Dashboard extends React.Component {
                     
                     <div className="category-header">
                         <span>{cat}</span>
-                        <a onClick={(e)=>this.props.onShowAddTaskModal(cat)} href="#" className="task-add-icon">&#x002B;</a>
+                        <a title="new task" onClick={(e)=>this.props.onShowAddTaskModal(cat)} href="#" className="task-add-icon">&#x002B;</a>
                     </div>
 
                     <TaskList tasks= {filteredTasks}
