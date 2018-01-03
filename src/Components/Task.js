@@ -2,13 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Task = (props) => {
-    var {task,index} = props;
+    var {task,subtasks, index} = props;
     var completedClass = task.completed ? "task-completed": "";
     var checked  = task.completed ? "checked" : "";
     var editText = task.edit ? "close" : "edit";
     var bodyClass = task.completed ? "task-body task-completed": "task-body";
 
     var user = props.getUser(task.userId);
+
+    var subTasksView = subtasks.map((subTask) => {
+        return (
+            <li key={subTask.id}>{subTask.title}</li>
+        );
+    })
 
     return (
         <div  key={task.id}
@@ -52,6 +58,12 @@ const Task = (props) => {
                 <input type="button" value={editText}
                     onClick={() => {props.onToggleEdit(task.id)}} />
             </div>
+            <div className="sub-tasks">
+                <ul>
+                 { subTasksView }
+                </ul>
+            </div>
+
             <footer className="task-footer">created by {user.name}</footer>
         </div>
     );

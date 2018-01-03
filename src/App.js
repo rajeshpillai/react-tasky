@@ -20,6 +20,15 @@ class App extends Component {
       {id: 4, title: "Learn devops", completed: false, category: "todo",userId:"2"  },
       {id: 5, title: "Learn cloud computing", completed: true, category: "completed",userId:"1"  },
     ],
+    subtask: {
+      id: null,
+      taskId: null,
+      title: null,
+      completed: false
+    },
+
+    subtasks: [],
+
     categories: [
       "inprogress",
       "todo",
@@ -32,9 +41,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    var tasks = this.state.tasks;
+    var {tasks,subtasks} = this.state;
     for(let i = 0; i < tasks.length; i++) {
       tasks[i].description = "Some random text " + i;
+
+      for(let j = 0; j < 5; j++) {
+        subtasks.push({
+          id: j + 1,
+          taskId: tasks[i].id,
+          title: "Subtask of " + j + 1,
+          completed: false
+        })
+      }
     }
 
     this.setState({
@@ -196,6 +214,7 @@ class App extends Component {
           <Header />
           <Dashboard categories = {this.state.categories} 
                  tasks= {this.state.tasks}
+                 subtasks={this.state.subtasks}
                  getUser={this.getUser}
                         onDeleteTask={this.onDeleteTask}
                         onToggleComplete={this.onToggleComplete}

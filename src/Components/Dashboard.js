@@ -14,6 +14,7 @@ export default class Dashboard extends React.Component {
     render() {
         var {categories, 
                 tasks, 
+                subtasks,
                 getUser,
                 onDeleteTask,
                 onEditTaskDesc, 
@@ -44,6 +45,7 @@ export default class Dashboard extends React.Component {
                     </div>
 
                     <TaskList tasks= {filteredTasks}
+                        subtasks = {subtasks}
                         getUser = {getUser}
                         onDeleteTask={onDeleteTask}
                         onToggleComplete={onToggleComplete}

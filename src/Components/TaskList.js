@@ -1,9 +1,13 @@
 import React from 'react';
 import Task from './Task'
 var taskList = (props) => {
+    var allsubtasks = props.subtasks;
     var taskList =  props.tasks.map((task, i) => {
+        let subtasks = allsubtasks.filter((st) => {
+            return task.id == st.taskId;
+        });
         return(
-           <Task key={task.id} {...props} task={task} index={i} />
+           <Task key={task.id} {...props} task={task} subtasks={subtasks} index={i} />
         );
     });
     return (
