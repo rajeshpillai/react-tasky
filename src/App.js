@@ -170,7 +170,7 @@ class App extends Component {
 
           {task && 
             <Modal show={this.state.isOpen} onClose={this.toggleModal}>
-             <Task  task={task}
+             <Task  task={task} modal={true}
                 onDeleteTask={this.onDeleteTask}
                 onToggleComplete={this.onToggleComplete}
                 onToggleEdit={this.onToggleEdit}

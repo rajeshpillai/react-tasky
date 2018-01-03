@@ -19,7 +19,10 @@ export default (props) => {
                     value={task.title} /> 
                 :
                 <header style={{position: "relative"}} className="task-title">{task.title}
-                    <span style={{position:"absolute", right: 0, marginTop:"-4px"}} onClick={()=> {props.onShowTaskModal(task.id)}}>&#128470;</span>
+                    {!props.modal &&
+                        <span style={{position:"absolute", right: 0, marginTop:"-4px"}} 
+                        onClick={()=> {props.onShowTaskModal(task.id)}}>&#x2197;</span>
+                    }
                 </header>
             }
             <div className="task-body">
