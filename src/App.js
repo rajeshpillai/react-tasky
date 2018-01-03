@@ -126,10 +126,16 @@ class App extends Component {
     ev.preventDefault();
   }
 
-  onDrag = (ev, id) => {
+  onDragStart = (ev, id) => {
+    console.log('dragstart:',id);
     ev.dataTransfer.setData("id", ev.target.dataset.id);
     ev.dataTransfer.setData("index", ev.target.dataset.index);
   }
+
+  onDrag = (ev, id) => {
+    console.log('drag:',id);
+  }
+
 
   onDrop = (ev, cat) => {
     ev.preventDefault();
@@ -164,6 +170,7 @@ class App extends Component {
                         onEditTaskDesc= {this.onEditTaskDesc}
                         onDragover={this.onDragover}
                         onDrag={this.onDrag}
+                        onDragStart={this.onDragStart}
                         onDrop={this.onDrop}
                         onShowTaskModal={this.onShowTaskModal}
           />

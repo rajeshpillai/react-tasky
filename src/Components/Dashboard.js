@@ -16,7 +16,8 @@ export default class Dashboard extends React.Component {
                 onToggleEdit,
                 onDragover,
                 onDrag,
-                onDrop
+                onDrop,
+                onDragStart
         } = this.props;
         
         var taskLists = categories.map((cat) => {
@@ -37,6 +38,7 @@ export default class Dashboard extends React.Component {
                         onEditTaskDesc={onEditTaskDesc}
                         onEditTask={onEditTask}
                         onDrag={onDrag}
+                        onDragStart={onDragStart}
                         onShowTaskModal={onShowTaskModal}
                     />
                 </div>
