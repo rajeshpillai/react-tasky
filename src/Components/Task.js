@@ -9,8 +9,6 @@ export default (props) => {
     return (
         <li  key={task.id}
             data-id={task.id}
-            data-category={task.category}
-            data-index={index}
             draggable="true"
             onDragStart={(e) => props.onDrag(e, task.id)}
             className={completedClass}>
