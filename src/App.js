@@ -6,6 +6,7 @@ import TaskForm from './Components/TaskForm';
 import Dashboard from './Components/Dashboard';
 import Modal from './Components/Modal';
 import Task from './Components/Task';
+import Menu from './Components/Menu';
 
 class App extends Component {
   state = {
@@ -257,6 +258,7 @@ class App extends Component {
     return (
       <div className="App">
           <Header />
+          <Menu />
           <Dashboard categories = {this.state.categories} 
                  tasks= {this.state.tasks}
                  subTasks={this.state.subTasks}

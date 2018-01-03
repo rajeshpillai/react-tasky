@@ -5,7 +5,7 @@ body {
   background-color: IVORY;
 }
 .App {
-  width: 90%;
+  width: 95%;
   margin: auto;
 }
 .remove-icon {
@@ -88,4 +88,14 @@ body {
   background: none;
   background-color: DEEPSKYBLUE;
   color: white
+}
+
+.main-menu > ul {
+  list-style-type: none;
+  display: inline-block;
+}
+
+.main-menu > ul > li {
+  float: left;
+  padding: 5px;
 }
