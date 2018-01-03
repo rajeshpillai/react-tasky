@@ -31,7 +31,12 @@ export default class Dashboard extends React.Component {
                     key ={cat}
                     onDragOver={(e) => { onDragover(e)}}
                     onDrop={(e) =>{onDrop(e, cat)}}>
-                    {cat}
+                    
+                    <div className="category-header">
+                        <span>{cat}</span>
+                        <span className="task-add-icon">&#x002B;</span>
+                    </div>
+
                     <TaskList tasks= {filteredTasks}
                         getUser = {getUser}
                         onDeleteTask={onDeleteTask}
