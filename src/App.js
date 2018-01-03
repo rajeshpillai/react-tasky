@@ -12,6 +12,7 @@ class App extends Component {
     isOpen: false,  // for Edit task modal.  Refactor naming
     showAddTaskModal: false,
     task: null,
+    catForTask: "todo", // category for new task
     tasks: [
       {id: 1, title: "Code a react app", completed: false, category: "inprogress",userId:"1" },
       {id: 2, title: "Code a node app", completed: true, category: "inprogress",userId:"1"  },
@@ -51,13 +52,14 @@ class App extends Component {
     return user[0];
   }
 
-  onShowAddTaskModal = () => {
-    this.toggleAddTaskModal();
+  onShowAddTaskModal = (cat = "todo") => {
+    this.toggleAddTaskModal(cat);
   }
 
-  toggleAddTaskModal = () => { 
+  toggleAddTaskModal = (cat) => { 
     this.setState({
-      showAddTaskModal: !this.state.showAddTaskModal
+      showAddTaskModal: !this.state.showAddTaskModal,
+      catForTask: cat
     });
   }
 
@@ -80,7 +82,7 @@ class App extends Component {
 
   onTaskSubmit = (task) => {
     task.id = this.state.tasks.length + 1;
-    task.category = "todo";
+    task.category = this.state.catForTask;
     task.userId = "1";
 
     this.setState({
@@ -188,7 +190,7 @@ class App extends Component {
   render() {
     var task = this.state.task;
     var showAddTaskModal = this.state.showAddTaskModal;
-
+    
     return (
       <div className="App">
           <Header />
