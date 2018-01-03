@@ -192,6 +192,7 @@ class App extends Component {
           {task && 
             <Modal show={this.state.isOpen} onClose={this.toggleModal}>
              <Task  task={task} modal={true}
+               getUser={this.getUser}
                 onDeleteTask={this.onDeleteTask}
                 onToggleComplete={this.onToggleComplete}
                 onToggleEdit={this.onToggleEdit}
