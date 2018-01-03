@@ -46,6 +46,9 @@ const Task = (props) => {
                     onChange={()=>{props.onEditTask(task.id,this.editTaskInput)}} 
                     value={task.title} /> 
 
+                    <input type="button" value={editText} className="edit-task-action"
+                    onClick={() => {props.onToggleEdit(task.id)}} />
+
                     <a href="#" 
                     onClick={() => {props.onDeleteTask(task.id)}} 
                     className="remove-icon">&#x1f5d1;</a>
@@ -56,6 +59,9 @@ const Task = (props) => {
                         <span style={{position:"absolute", right: 0, marginTop:"-4px"}} 
                         onClick={()=> {props.onShowTaskModal(task.id)}}>&#x2197;</span>
                     }
+                    <input type="button" value={editText} className="edit-task-action"
+                    onClick={() => {props.onToggleEdit(task.id)}} />
+
                     <a href="#" 
                     onClick={() => {props.onDeleteTask(task.id)}} 
                     className="remove-icon">&#x1f5d1;</a>
@@ -71,8 +77,7 @@ const Task = (props) => {
                 <input type="checkbox" checked={checked}
                     onChange={() => {props.onToggleComplete(task.id)}} />
 
-                <input type="button" value={editText}
-                    onClick={() => {props.onToggleEdit(task.id)}} />
+              
 
                 <input type="button" value="Add subtask"
                     onClick={() => {props.onToggleNewSubTask(task.id)}} />

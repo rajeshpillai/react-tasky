@@ -82,3 +82,10 @@ body {
   width: 100%;
   height: 40px;
 }
+
+.edit-task-action{
+  border: none;
+  background: none;
+  background-color: DEEPSKYBLUE;
+  color: white
+}
