@@ -24,7 +24,8 @@ class App extends Component {
       id: null,
       taskId: null,
       title: null,
-      completed: false
+      completed: false,
+      edit: false // toggle edit mode
     },
 
     subTasks: [],
@@ -186,12 +187,36 @@ class App extends Component {
     });
   }
 
-  onToggleSubTask = (taskId) => {
+  onToggleNewSubTask = (taskId, taskSubTaskId = -1) => {
     var subTasks = this.state.subTasks;
+    if (taskSubTaskId < 0) {
+      var newSubTask = {id: subTasks.length + 1, title: 'todo', taskId: taskId, completed: false,edit: true};
+      this.setState({
+        subTasks: [newSubTask, ...subTasks]
+      });
+    } else {
+      var subTask = this.state.subTasks.filter((subT) => {
+        return subT.id === taskSubTaskId;
+      })[0];
+      subTask.edit = false;
+      console.log(subTask.title);
+      this.setState({
+        subTask
+      })
+    }
 
-    var newSubTask = {id:+ new Date(), title: 'todo', taskId: taskId, completed: false},edit: true;
+  }
+
+  onEditSubTask = (e,subTaskId) => {
+    var target = e.target;
+    var subTasks = this.state.subTasks.map((task) => {
+      if (task.id === subTaskId) {
+        task.title = target.value;
+      }
+      return task;
+    });
     this.setState({
-     subTasks: [newSubTask, ...subTasks]
+      subTasks
     });
   }
   
@@ -202,7 +227,7 @@ class App extends Component {
 
       for(let j = 0; j < 5; j++) {
         subTasks.push({
-          id: j + 1,
+          id:  i + j,
           taskId: tasks[i].id,
           title: "Subtask of " + j + 1,
           completed: false
@@ -239,7 +264,8 @@ class App extends Component {
                         onDrop={this.onDrop}
                         onShowTaskModal={this.onShowTaskModal}
                         onShowAddTaskModal={this.onShowAddTaskModal}
-                        onToggleSubTask={this.onToggleSubTask}
+                        onToggleNewSubTask={this.onToggleNewSubTask}
+                        onEditSubTask={this.onEditSubTask}
           />
 
           {task && 

@@ -11,8 +11,24 @@ const Task = (props) => {
     var user = props.getUser(task.userId);
 
     var subTasksView = subtasks.map((subTask) => {
+        var edit = subTask.edit;
         return (
-            <li key={subTask.id}>{subTask.title}</li>
+            <li key={subTask.id}>
+              {edit ? <input type="text" title="enter to submit"  
+                    onChange={(e)=>{props.onEditSubTask(e,subTask.id)}} 
+                    onKeyPress={(e) => {
+                        console.log(e.which, e.keyCode);
+                        if (e.which === 13) {
+                            console.log("enter..");
+                            props.onToggleNewSubTask(task.id, subTask.id)
+                        }
+                    }}
+                /> 
+                : 
+                subTask.title
+              }  
+
+            </li>
         );
     })
 
@@ -59,7 +75,7 @@ const Task = (props) => {
                     onClick={() => {props.onToggleEdit(task.id)}} />
 
                 <input type="button" value="Add subtask"
-                    onClick={() => {props.onToggleSubTask(task.id)}} />
+                    onClick={() => {props.onToggleNewSubTask(task.id)}} />
             </div>
             <div className="sub-tasks">
                 <ul>
