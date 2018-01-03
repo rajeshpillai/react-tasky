@@ -187,6 +187,7 @@ class App extends Component {
     });
   }
 
+  // if taskSubTaskId present, then edit mode, otherwise new subtask
   onToggleNewSubTask = (taskId, taskSubTaskId = -1) => {
     var subTasks = this.state.subTasks;
     if (taskSubTaskId < 0) {
@@ -199,14 +200,13 @@ class App extends Component {
         return subT.id === taskSubTaskId;
       })[0];
       subTask.edit = false;
-      console.log(subTask.title);
       this.setState({
         subTask
       })
     }
-
   }
 
+  // When subtask title changes.. refactor
   onEditSubTask = (e,subTaskId) => {
     var target = e.target;
     var subTasks = this.state.subTasks.map((task) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Task = (props) => {
-    var {task,subtasks, index} = props;
+    var {task,subTasks, index} = props;
     var completedClass = task.completed ? "task-completed": "";
     var checked  = task.completed ? "checked" : "";
     var editText = task.edit ? "close" : "edit";
@@ -10,7 +10,7 @@ const Task = (props) => {
 
     var user = props.getUser(task.userId);
 
-    var subTasksView = subtasks.map((subTask) => {
+    var subTasksView = subTasks.map((subTask) => {
         var edit = subTask.edit;
         return (
             <li key={subTask.id}>

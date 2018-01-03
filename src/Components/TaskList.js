@@ -7,7 +7,7 @@ var taskList = (props) => {
             return task.id == st.taskId;
         });
         return(
-           <Task key={task.id} {...props} task={task} subtasks={subtasks} index={i} />
+           <Task key={task.id} {...props} task={task} subTasks={subtasks} index={i} />
         );
     });
     return (
