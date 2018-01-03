@@ -31,8 +31,7 @@ export default (props) => {
                     onChange={(e)=>{props.onEditTaskDesc(task.id,e.target.value)}}  />
                 
                 <input type="checkbox" checked={checked}
-                    defaultChecked={checked}
-                    onClick={() => {props.onToggleComplete(task.id)}} />
+                    onChange={() => {props.onToggleComplete(task.id)}} />
 
                 <input type="button" value={editText}
                     onClick={() => {props.onToggleEdit(task.id)}} />
