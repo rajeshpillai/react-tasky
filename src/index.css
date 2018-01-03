@@ -24,6 +24,7 @@ body {
   border: 1px lightgray dashed;
   height: 80vh;
   padding: 10px;
+  background-color: wheat;
 }
 
 .task-list {
@@ -33,7 +34,8 @@ body {
 }
 
 .task-list > li {
-  border: 1px solid wheat;
+  margin: 5px;
+  border: 1px solid green;
   padding: 5px;
 }
 

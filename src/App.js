@@ -103,6 +103,33 @@ class App extends Component {
     });
   }
 
+  onDragover = (ev) => {
+    ev.preventDefault();
+  }
+
+  onDrag = (ev, id) => {
+    ev.dataTransfer.setData("id", ev.target.dataset.id);
+    ev.dataTransfer.setData("index", ev.target.dataset.index);
+  }
+
+  onDrop = (ev, cat) => {
+    ev.preventDefault();
+    var id = Number(ev.dataTransfer.getData("id"));
+    var tasks = this.state.tasks;
+
+    var tasks = tasks.filter((task) => {
+      if (task.id === id) {
+        task.category = cat;
+      }
+      return task;
+    });
+
+    this.setState({     
+      ...this.state ,
+      tasks:tasks
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -115,6 +142,9 @@ class App extends Component {
                         onToggleEdit={this.onToggleEdit}
                         onEditTask={this.onEditTask}
                         onEditTaskDesc= {this.onEditTaskDesc}
+                        onDragover={this.onDragover}
+                        onDrag={this.onDrag}
+                        onDrop={this.onDrop}
           />
 
       </div>

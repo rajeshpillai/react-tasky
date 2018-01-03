@@ -1,13 +1,19 @@
 import React from 'react';
 
 export default (props) => {
-    var {task} = props;
+    var {task,index} = props;
     var completedClass = task.completed ? "task-completed": "";
     var checked  = task.completed ? "checked" : "";
     var editText = task.edit ? "close" : "edit";
     
     return (
-        <li key={task.id} className={completedClass}>
+        <li  key={task.id}
+            data-id={task.id}
+            data-category={task.category}
+            data-index={index}
+            draggable="true"
+            onDragStart={(e) => props.onDrag(e, task.id)}
+            className={completedClass}>
             {task.edit 
                 ? <input type="text" 
                     ref={(editTask)=>{this.editTaskInput=editTask}}
@@ -25,6 +31,7 @@ export default (props) => {
                     onChange={(e)=>{props.onEditTaskDesc(task.id,e.target.value)}}  />
                 
                 <input type="checkbox" checked={checked}
+                    defaultChecked={checked}
                     onClick={() => {props.onToggleComplete(task.id)}} />
 
                 <input type="button" value={editText}
