@@ -34,7 +34,7 @@ body {
   list-style-type: none;
 }
 
-.task-list > li {
+.task-list > div {
   margin: 5px;
   border: 1px solid green;
   padding: 5px;
@@ -57,4 +57,8 @@ body {
 .task-footer {
   text-transform: lowercase;
   font-size: 0.7em;
+}
+
+.task-desc-edit {
+  width: 80%;
 }

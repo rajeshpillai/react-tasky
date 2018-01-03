@@ -10,7 +10,7 @@ export default (props) => {
     var user = props.getUser(task.userId);
 
     return (
-        <li  key={task.id}
+        <div  key={task.id}
             data-id={task.id}
             draggable="true"
             onDragStart={(e) => props.onDragStart && props.onDragStart(e, task.id)}
@@ -34,7 +34,7 @@ export default (props) => {
                     onClick={() => {props.onDeleteTask(task.id)}} 
                     className="remove-icon">&#x1f5d1;</a>
 
-                <textarea value={task.description}
+                <textarea className="task-desc-edit" value={task.description}
                     onChange={(e)=>{props.onEditTaskDesc(task.id,e.target.value)}}  />
                 
                 <input type="checkbox" checked={checked}
@@ -44,6 +44,6 @@ export default (props) => {
                     onClick={() => {props.onToggleEdit(task.id)}} />
             </div>
             <footer className="task-footer">created by {user.name}</footer>
-        </li>
+        </div>
     );
 }

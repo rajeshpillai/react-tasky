@@ -8,7 +8,7 @@ var taskList = (props) => {
     });
     return (
         <div>
-            <ul className="task-list" key={props.category}>{taskList}</ul>
+            <div className="task-list" key={props.category}>{taskList}</div>
         </div>
     );
 }
