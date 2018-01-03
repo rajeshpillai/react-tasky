@@ -122,9 +122,6 @@ class App extends Component {
     });
   }
 
-  onDragover = (ev) => {
-    ev.preventDefault();
-  }
 
   onDragStart = (ev, id) => {
     console.log('dragstart:',id);
@@ -134,6 +131,10 @@ class App extends Component {
 
   onDrag = (ev, id) => {
     console.log('drag:',id);
+  }
+  
+  onDragover = (ev) => {
+    ev.preventDefault();
   }
 
 

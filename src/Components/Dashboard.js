@@ -14,10 +14,10 @@ export default class Dashboard extends React.Component {
                 onToggleComplete, 
                 onEditTask, 
                 onToggleEdit,
-                onDragover,
+                onDragStart,
                 onDrag,
-                onDrop,
-                onDragStart
+                onDragover,
+                onDrop
         } = this.props;
         
         var taskLists = categories.map((cat) => {
