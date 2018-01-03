@@ -52,6 +52,14 @@ class App extends Component {
     return user[0];
   }
 
+  getSubTasks = (taskId) => {
+    var subTasks = this.state.subTasks.filter((t) => {
+        return t.taskId === taskId;
+    });
+
+    return subTasks;
+  }
+
   onShowAddTaskModal = (cat = "todo") => {
     this.toggleAddTaskModal(cat);
   }
@@ -272,6 +280,7 @@ class App extends Component {
             <Modal show={this.state.isOpen} onClose={this.toggleModal}>
              <Task  task={task} modal={true}
                getUser={this.getUser}
+               subTasks={this.getSubTasks(task.id)}
                 onDeleteTask={this.onDeleteTask}
                 onToggleComplete={this.onToggleComplete}
                 onToggleEdit={this.onToggleEdit}
