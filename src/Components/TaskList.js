@@ -1,7 +1,7 @@
 import React from 'react';
 import Task from './Task'
 var taskList = (props) => {
-    var allsubtasks = props.subtasks;
+    var allsubtasks = props.subTasks;
     var taskList =  props.tasks.map((task, i) => {
         let subtasks = allsubtasks.filter((st) => {
             return task.id == st.taskId;

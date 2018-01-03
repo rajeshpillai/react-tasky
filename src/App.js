@@ -20,14 +20,14 @@ class App extends Component {
       {id: 4, title: "Learn devops", completed: false, category: "todo",userId:"2"  },
       {id: 5, title: "Learn cloud computing", completed: true, category: "completed",userId:"1"  },
     ],
-    subtask: {
+    subTask: {
       id: null,
       taskId: null,
       title: null,
       completed: false
     },
 
-    subtasks: [],
+    subTasks: [],
 
     categories: [
       "inprogress",
@@ -40,26 +40,7 @@ class App extends Component {
     ]
   }
 
-  componentDidMount() {
-    var {tasks,subtasks} = this.state;
-    for(let i = 0; i < tasks.length; i++) {
-      tasks[i].description = "Some random text " + i;
-
-      for(let j = 0; j < 5; j++) {
-        subtasks.push({
-          id: j + 1,
-          taskId: tasks[i].id,
-          title: "Subtask of " + j + 1,
-          completed: false
-        })
-      }
-    }
-
-    this.setState({
-      tasks
-    });
-
-  }
+  
 
   getUser = (userId) => {
     var users = this.state.users;
@@ -205,6 +186,37 @@ class App extends Component {
     });
   }
 
+  onToggleSubTask = (taskId) => {
+    var subTasks = this.state.subTasks;
+
+    var newSubTask = {id:+ new Date(), title: 'todo', taskId: taskId, completed: false},edit: true;
+    this.setState({
+     subTasks: [newSubTask, ...subTasks]
+    });
+  }
+  
+  componentDidMount() {
+    var {tasks,subTasks} = this.state;
+    for(let i = 0; i < tasks.length; i++) {
+      tasks[i].description = "Some random text " + i;
+
+      for(let j = 0; j < 5; j++) {
+        subTasks.push({
+          id: j + 1,
+          taskId: tasks[i].id,
+          title: "Subtask of " + j + 1,
+          completed: false
+        })
+      }
+    }
+
+    this.setState({
+      tasks,
+      subTasks
+    });
+
+  }
+
   render() {
     var task = this.state.task;
     var showAddTaskModal = this.state.showAddTaskModal;
@@ -214,7 +226,7 @@ class App extends Component {
           <Header />
           <Dashboard categories = {this.state.categories} 
                  tasks= {this.state.tasks}
-                 subtasks={this.state.subtasks}
+                 subTasks={this.state.subTasks}
                  getUser={this.getUser}
                         onDeleteTask={this.onDeleteTask}
                         onToggleComplete={this.onToggleComplete}
@@ -227,6 +239,7 @@ class App extends Component {
                         onDrop={this.onDrop}
                         onShowTaskModal={this.onShowTaskModal}
                         onShowAddTaskModal={this.onShowAddTaskModal}
+                        onToggleSubTask={this.onToggleSubTask}
           />
 
           {task && 

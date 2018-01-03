@@ -57,6 +57,9 @@ const Task = (props) => {
 
                 <input type="button" value={editText}
                     onClick={() => {props.onToggleEdit(task.id)}} />
+
+                <input type="button" value="Add subtask"
+                    onClick={() => {props.onToggleSubTask(task.id)}} />
             </div>
             <div className="sub-tasks">
                 <ul>
