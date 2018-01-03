@@ -9,6 +9,9 @@ import Task from './Components/Task';
 
 class App extends Component {
   state = {
+    isOpen: false,  // for Edit task modal.  Refactor naming
+    showAddTaskModal: false,
+    task: null,
     tasks: [
       {id: 1, title: "Code a react app", completed: false, category: "inprogress",userId:"1" },
       {id: 2, title: "Code a node app", completed: true, category: "inprogress",userId:"1"  },
@@ -48,9 +51,21 @@ class App extends Component {
     return user[0];
   }
 
+  onShowAddTaskModal = () => {
+    this.toggleAddTaskModal();
+  }
+
+  toggleAddTaskModal = () => { 
+    this.setState({
+      showAddTaskModal: !this.state.showAddTaskModal
+    });
+  }
+
   onShowTaskModal = (taskId) => {
     this.toggleModal(taskId);
   }
+
+  
 
   toggleModal = (taskId) => { 
     var task = this.state.tasks.filter((task) => {
@@ -66,6 +81,8 @@ class App extends Component {
   onTaskSubmit = (task) => {
     task.id = this.state.tasks.length + 1;
     task.category = "todo";
+    task.userId = "1";
+
     this.setState({
       tasks: [task, ...this.state.tasks]
     })
@@ -170,10 +187,11 @@ class App extends Component {
 
   render() {
     var task = this.state.task;
+    var showAddTaskModal = this.state.showAddTaskModal;
+
     return (
       <div className="App">
           <Header />
-          <TaskForm onSubmit={this.onTaskSubmit} />
           <Dashboard categories = {this.state.categories} 
                  tasks= {this.state.tasks}
                  getUser={this.getUser}
@@ -187,6 +205,7 @@ class App extends Component {
                         onDragStart={this.onDragStart}
                         onDrop={this.onDrop}
                         onShowTaskModal={this.onShowTaskModal}
+                        onShowAddTaskModal={this.onShowAddTaskModal}
           />
 
           {task && 
@@ -199,6 +218,12 @@ class App extends Component {
                 onEditTask={this.onEditTask}
                 onEditTaskDesc= {this.onEditTaskDesc}
              />
+            </Modal>  
+          }
+
+          {showAddTaskModal && 
+            <Modal show={showAddTaskModal} onClose={this.toggleAddTaskModal}>
+             <TaskForm onSubmit={this.onTaskSubmit} />
             </Modal>  
           }
 
