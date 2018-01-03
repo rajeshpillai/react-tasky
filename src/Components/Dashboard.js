@@ -10,6 +10,7 @@ export default class Dashboard extends React.Component {
                 tasks, 
                 onDeleteTask,
                 onEditTaskDesc, 
+                onShowTaskModal,
                 onToggleComplete, 
                 onEditTask, 
                 onToggleEdit,
@@ -36,6 +37,7 @@ export default class Dashboard extends React.Component {
                         onEditTaskDesc={onEditTaskDesc}
                         onEditTask={onEditTask}
                         onDrag={onDrag}
+                        onShowTaskModal={onShowTaskModal}
                     />
                 </div>
             )

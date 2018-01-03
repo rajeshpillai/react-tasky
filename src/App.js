@@ -165,6 +165,7 @@ class App extends Component {
                         onDragover={this.onDragover}
                         onDrag={this.onDrag}
                         onDrop={this.onDrop}
+                        onShowTaskModal={this.onShowTaskModal}
           />
 
           {task && 
