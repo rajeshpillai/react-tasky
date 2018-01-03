@@ -10,16 +10,20 @@ import Task from './Components/Task';
 class App extends Component {
   state = {
     tasks: [
-      {id: 1, title: "Code a react app", completed: false, category: "inprogress" },
-      {id: 2, title: "Code a node app", completed: true, category: "inprogress" },
-      {id: 3, title: "Code a full stack app", completed: true, category: "todo" },
-      {id: 4, title: "Learn devops", completed: false, category: "todo" },
-      {id: 5, title: "Learn cloud computing", completed: true, category: "completed" },
+      {id: 1, title: "Code a react app", completed: false, category: "inprogress",userId:"1" },
+      {id: 2, title: "Code a node app", completed: true, category: "inprogress",userId:"1"  },
+      {id: 3, title: "Code a full stack app", completed: true, category: "todo",userId:"2"  },
+      {id: 4, title: "Learn devops", completed: false, category: "todo",userId:"2"  },
+      {id: 5, title: "Learn cloud computing", completed: true, category: "completed",userId:"1"  },
     ],
     categories: [
       "inprogress",
       "todo",
       "completed"
+    ],
+    users: [
+      {id: 1, name: "Rajesh Pillai"},
+      {id: 2, name: "Radhika Pillai"},
     ]
   }
 
@@ -35,6 +39,14 @@ class App extends Component {
 
   }
 
+  getUser = (userId) => {
+    var users = this.state.users;
+    var user = users.filter((user) => {
+      return user.id == userId;
+    });
+
+    return user[0];
+  }
 
   onShowTaskModal = (taskId) => {
     this.toggleModal(taskId);
@@ -132,7 +144,7 @@ class App extends Component {
   onDrag = (ev, id) => {
     console.log('drag:',id);
   }
-  
+
   onDragover = (ev) => {
     ev.preventDefault();
   }
@@ -164,6 +176,7 @@ class App extends Component {
           <TaskForm onSubmit={this.onTaskSubmit} />
           <Dashboard categories = {this.state.categories} 
                  tasks= {this.state.tasks}
+                 getUser={this.getUser}
                         onDeleteTask={this.onDeleteTask}
                         onToggleComplete={this.onToggleComplete}
                         onToggleEdit={this.onToggleEdit}

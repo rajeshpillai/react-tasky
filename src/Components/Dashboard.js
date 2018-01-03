@@ -8,6 +8,7 @@ export default class Dashboard extends React.Component {
     render() {
         var {categories, 
                 tasks, 
+                getUser,
                 onDeleteTask,
                 onEditTaskDesc, 
                 onShowTaskModal,
@@ -32,6 +33,7 @@ export default class Dashboard extends React.Component {
                     onDrop={(e) =>{onDrop(e, cat)}}>
                     {cat}
                     <TaskList tasks= {filteredTasks}
+                        getUser = {getUser}
                         onDeleteTask={onDeleteTask}
                         onToggleComplete={onToggleComplete}
                         onToggleEdit={onToggleEdit}

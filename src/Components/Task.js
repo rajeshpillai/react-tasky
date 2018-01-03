@@ -5,14 +5,17 @@ export default (props) => {
     var completedClass = task.completed ? "task-completed": "";
     var checked  = task.completed ? "checked" : "";
     var editText = task.edit ? "close" : "edit";
-    
+    var bodyClass = task.completed ? "task-body task-completed": "task-body";
+
+    var user = props.getUser(task.userId);
+
     return (
         <li  key={task.id}
             data-id={task.id}
             draggable="true"
             onDragStart={(e) => props.onDragStart(e, task.id)}
             onDrag={(e) => props.onDrag(e, task.id)}
-            className={completedClass}>
+            >
             {task.edit 
                 ? <input type="text" 
                     ref={(editTask)=>{this.editTaskInput=editTask}}
@@ -26,7 +29,7 @@ export default (props) => {
                     }
                 </header>
             }
-            <div className="task-body">
+            <div className={bodyClass}>
                 <a href="#" 
                     onClick={() => {props.onDeleteTask(task.id)}} 
                     className="remove-icon">&#x1f5d1;</a>
@@ -40,6 +43,7 @@ export default (props) => {
                 <input type="button" value={editText}
                     onClick={() => {props.onToggleEdit(task.id)}} />
             </div>
+            <footer className="task-footer">created by {user.name}</footer>
         </li>
     );
 }

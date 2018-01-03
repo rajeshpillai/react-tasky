@@ -16,6 +16,7 @@ body {
 
 .task-completed{
   text-decoration: line-through;
+  background-color:lightgreen;
 }
 
 .category {
@@ -51,4 +52,9 @@ body {
 
 .task-body{
   padding: 5px;
+}
+
+.task-footer {
+  text-transform: lowercase;
+  font-size: 0.7em;
 }
