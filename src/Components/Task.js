@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default (props) => {
+const Task = (props) => {
     var {task,index} = props;
     var completedClass = task.completed ? "task-completed": "";
     var checked  = task.completed ? "checked" : "";
@@ -55,3 +56,10 @@ export default (props) => {
         </div>
     );
 }
+
+Task.propTypes = {
+    onDeleteTask: PropTypes.func.isRequired,
+    onEditTask: PropTypes.func.isRequired
+}
+
+export default Task;

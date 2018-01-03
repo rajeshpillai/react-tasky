@@ -1,9 +1,15 @@
 import React from 'react';
 import TaskList from './TaskList';
+import PropTypes from 'prop-types';
 
 export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
+    }
+   
+    static propTypes = {
+        categories: PropTypes.array.isRequired,
+        tasks: PropTypes.array.isRequired
     }
     render() {
         var {categories, 
