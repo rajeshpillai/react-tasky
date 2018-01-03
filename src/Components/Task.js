@@ -17,23 +17,28 @@ export default (props) => {
             onDrag={(e) => props.onDrag && props.onDrag(e, task.id)}
             >
             {task.edit 
-                ? <input type="text" 
+                ? <header style={{position: "relative"}} className="task-title">
+                    <input type="text" 
                     ref={(editTask)=>{this.editTaskInput=editTask}}
                     onChange={()=>{props.onEditTask(task.id,this.editTaskInput)}} 
                     value={task.title} /> 
+
+                    <a href="#" 
+                    onClick={() => {props.onDeleteTask(task.id)}} 
+                    className="remove-icon">&#x1f5d1;</a>
+                </header>
                 :
                 <header style={{position: "relative"}} className="task-title">{task.title}
                     {!props.modal &&
                         <span style={{position:"absolute", right: 0, marginTop:"-4px"}} 
                         onClick={()=> {props.onShowTaskModal(task.id)}}>&#x2197;</span>
                     }
+                    <a href="#" 
+                    onClick={() => {props.onDeleteTask(task.id)}} 
+                    className="remove-icon">&#x1f5d1;</a>
                 </header>
             }
             <div className={bodyClass}>
-                <a href="#" 
-                    onClick={() => {props.onDeleteTask(task.id)}} 
-                    className="remove-icon">&#x1f5d1;</a>
-
                 {task.edit ?
                 <textarea className="task-desc-edit" value={task.description}
                     onChange={(e)=>{props.onEditTaskDesc(task.id,e.target.value)}}  />
