@@ -24,7 +24,7 @@ body {
   width: 30%;
   float: left;
   border: 1px lightgray dashed;
-  height: 80vh;
+  min-height: 110vh;
   padding: 10px;
   background-color: SNOW;
 }
