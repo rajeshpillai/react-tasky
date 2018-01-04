@@ -120,7 +120,8 @@ class App extends Component {
   onTaskSubmit = (task) => {
     task.id = this.state.tasks.length + 1;
     task.category = this.state.catForTask;
-    task.userId = "1";
+    task.userId = "1"; // todo: hardcoded
+    task.projectId = this.state.projects[0].id;
 
     this.setState({
       tasks: [task, ...this.state.tasks]
