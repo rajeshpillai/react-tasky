@@ -14,12 +14,20 @@ class App extends Component {
     showAddTaskModal: false,
     task: null,
     catForTask: "todo", // category for new task
+    projects: [
+      {id: 1, title: "Angular eBook",status:"inprogress"},
+      {id: 2, title: "React eBook",status:"inprogress"},
+      {id: 3, title: "NodeJS eBook",status:"inprogress"},
+      {id: 4, title: "Modern JavaScript eBook",status:"inprogress"},
+      {id: 5, title: "API Development",status:"inprogress"},
+      
+    ],
     tasks: [
-      {id: 1, title: "Code a react app", completed: false, category: "inprogress",userId:"1" },
-      {id: 2, title: "Code a node app", completed: true, category: "inprogress",userId:"1"  },
-      {id: 3, title: "Code a full stack app", completed: true, category: "todo",userId:"2"  },
-      {id: 4, title: "Learn devops", completed: false, category: "todo",userId:"2"  },
-      {id: 5, title: "Learn cloud computing", completed: true, category: "completed",userId:"1"  },
+      {id: 1,userId:"1",projectId: "1",title: "Code a react app", completed: false, category: "inprogress"},
+      {id: 2,userId:"1",projectId: "1", title: "Code a node app", completed: true, category: "inprogress"},
+      {id: 3,userId:"1",projectId: "1", title: "Code a full stack app", completed: true, category: "todo"},
+      {id: 4,userId:"2",projectId: "2", title: "Learn devops", completed: false, category: "todo"},
+      {id: 5,userId:"2",projectId: "2",title: "Learn cloud computing", completed: true, category: "completed"},
     ],
     subTask: {
       id: null,
