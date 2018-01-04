@@ -305,6 +305,7 @@ class App extends Component {
   render() {
     var task = this.state.task;
     var showAddTaskModal = this.state.showAddTaskModal;
+    var projectId = this.state.projectId;
 
     var projectList =  <ProjectList projects={this.state.projects}/>;
     var dashboard = (projectId) => {
@@ -312,6 +313,7 @@ class App extends Component {
         var tasks = this.state.tasks.filter((task) => {
             return task.projectId === projectId;
         });
+
         console.log("TASKS:PROJECTS: ", tasks);
         return(<Dashboard categories = {this.state.categories} 
                  projectId={projectId}
@@ -332,18 +334,21 @@ class App extends Component {
                         onShowAddTaskModal={this.onShowAddTaskModal}
                         onToggleNewSubTask={this.onToggleNewSubTask}
                         onEditSubTask={this.onEditSubTask}
-          />)};
+              />
+          )};
 
     return (
       <div className="App">
-          <Header />
+          <Header projectId= {projectId} />
           <Menu/>
           <Route exact path="/" render={()=>projectList}/>
 
           {this.state.projects.map(({ title, id }) => (
-            <Route key={id} path={`/dashboard/${id}`} render={() => (
-               dashboard(id)
-            )} />
+            <Route key={id} path={`/dashboard/${id}`} render={() => {
+              
+               return dashboard(id)
+             }
+            } />
           ))}
 
 
