@@ -15,19 +15,8 @@ export default class Dashboard extends React.Component {
         var {categories, 
                 tasks, 
                 subTasks,
-                getUser,
-                onDeleteTask,
-                onEditTaskDesc, 
-                onShowTaskModal,
-                onToggleComplete, 
-                onEditTask, 
-                onToggleEdit,
-                onDragStart,
-                onDrag,
                 onDragover,
-                onDrop,
-                onToggleNewSubTask,
-                onEditSubTask
+                onDrop
         } = this.props;
         
         var taskLists = categories.map((cat) => {
