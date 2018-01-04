@@ -9,6 +9,8 @@ import Task from './Components/Task';
 import Menu from './Components/Menu';
 import ProjectList from './Components/ProjectList';
 
+const uuidv4 = require('uuid/v4');
+
 class App extends Component {
   state = {
     isOpen: false,  // for Edit task modal.  Refactor naming
@@ -205,7 +207,8 @@ class App extends Component {
 
   onDrop = (ev, cat) => {
     ev.preventDefault();
-    var id = Number(ev.dataTransfer.getData("id"));
+    var id = ev.dataTransfer.getData("id");
+    console.log(`DROPPED task ${id} at ${cat}`);
     var tasks = this.state.tasks;
 
     var tasks = tasks.filter((task) => {
@@ -255,23 +258,42 @@ class App extends Component {
   }
   
   componentDidMount() {
-    var {tasks,subTasks} = this.state;
-    for(let i = 0; i < tasks.length; i++) {
-      tasks[i].description = "Some random text " + i;
+    var {subTasks,projects} = this.state;
+    var tasks = [];
 
-      for(let j = 0; j < 5; j++) {
-        subTasks.push({
-          id:  i + j,
-          taskId: tasks[i].id,
-          title: "Subtask of " + j + 1,
-          completed: false
-        })
-      }
+    for(let p = 1; p <= 10; p++) {
+      var projectId = uuidv4();
+      projects.push({
+        id: projectId,
+        title: `Project ${p}`,
+        status: 'todo'
+      });
+
+      for(let i = 1; i <= 5; i++) {
+          var taskId = uuidv4();
+          tasks.push({
+            id: taskId,
+            title: `Task ${i}`,
+            description: "Some random text " + i,
+            projectId: projectId,
+            category: (i%2) ? "inprogress": "todo",
+            userId: (i%2) ? 1 : 2
+          });
+          for(let j = 0; j < 5; j++) {
+            subTasks.push({
+              id:  uuidv4(),
+              taskId: taskId,
+              title: "Subtask of " + j + 1,
+              completed: false
+            })
+          }
+       }
     }
-
+   
     this.setState({
       tasks,
-      subTasks
+      subTasks,
+      projects
     });
 
   }
