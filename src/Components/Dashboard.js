@@ -46,19 +46,11 @@ export default class Dashboard extends React.Component {
                         <a title="new task" onClick={(e)=>this.props.onShowAddTaskModal(cat)} href="#" className="task-add-icon">&#x002B;</a>
                     </div>
 
-                    <TaskList tasks= {filteredTasks}
+                    <TaskList 
+                        {...this.props}
+                        tasks= {filteredTasks}
                         subTasks = {subTasks}
-                        getUser = {getUser}
-                        onDeleteTask={onDeleteTask}
-                        onToggleComplete={onToggleComplete}
-                        onToggleEdit={onToggleEdit}
-                        onEditTaskDesc={onEditTaskDesc}
-                        onEditTask={onEditTask}
-                        onDrag={onDrag}
-                        onDragStart={onDragStart}
-                        onShowTaskModal={onShowTaskModal}
-                        onToggleNewSubTask ={onToggleNewSubTask}
-                        onEditSubTask={onEditSubTask}
+                        
                     />
                 </div>
             )

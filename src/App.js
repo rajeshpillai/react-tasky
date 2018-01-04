@@ -202,7 +202,7 @@ class App extends Component {
     if (taskSubTaskId < 0) {
       var newSubTask = {id: subTasks.length + 1, title: 'todo', taskId: taskId, completed: false,edit: true};
       this.setState({
-        subTasks: [newSubTask, ...subTasks]
+        subTasks: [...subTasks, newSubTask]
       });
     } else {
       var subTask = this.state.subTasks.filter((subT) => {
