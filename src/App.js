@@ -14,7 +14,14 @@ class App extends Component {
     isOpen: false,  // for Edit task modal.  Refactor naming
     showAddTaskModal: false,
     task: null,
-    catForTask: "todo", // category for new task
+    catForTask: "todo", // category for new task,
+    
+    project: {
+      id: null,
+      title: null,
+      status: "todo"
+    },
+
     projects: [
       {id: 1, title: "Angular eBook",status:"inprogress"},
       {id: 2, title: "React eBook",status:"inprogress"},
@@ -68,6 +75,15 @@ class App extends Component {
     });
 
     return subTasks;
+  }
+
+  getProject = (projectId) => {
+    var projects = this.state.projects;
+    var project = projects.filter((project) => {
+      return project.id == projectId;
+    });
+
+    return project[0];
   }
 
   onShowAddTaskModal = (cat = "todo") => {
@@ -274,6 +290,7 @@ class App extends Component {
                  tasks= {this.state.tasks}
                  subTasks={this.state.subTasks}
                  getUser={this.getUser}
+                 getProject={this.getProject}
                         onDeleteTask={this.onDeleteTask}
                         onToggleComplete={this.onToggleComplete}
                         onToggleEdit={this.onToggleEdit}

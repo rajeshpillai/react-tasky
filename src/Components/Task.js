@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Task = (props) => {
-    var {task,subTasks, index} = props;
+    var {task,subTasks,getProject,index} = props;
     var completedClass = task.completed ? "task-completed": "";
     var checked  = task.completed ? "checked" : "";
     var editText = task.edit ? "close" : "edit";
     var bodyClass = task.completed ? "task-body task-completed": "task-body";
 
     var user = props.getUser(task.userId);
+
+    var project = getProject(task.projectId);
 
     var subTasksView = subTasks.map((subTask) => {
         var edit = subTask.edit;
@@ -85,7 +87,7 @@ const Task = (props) => {
                 </ol>
             </div>
 
-            <footer className="task-footer">created by {user.name}</footer>
+            <footer className="task-footer">created by {user.name} for {project.title}</footer>
         </div>
     );
 }
