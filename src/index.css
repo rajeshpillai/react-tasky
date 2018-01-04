@@ -90,7 +90,13 @@ body {
   color: white
 }
 
+.main-menu{
+  margin: 0;
+  padding:0;
+}
 .main-menu > ul {
+  margin: 0;
+  padding: 0;
   list-style-type: none;
   display: inline-block;
 }
