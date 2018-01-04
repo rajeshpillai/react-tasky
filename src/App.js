@@ -288,6 +288,8 @@ class App extends Component {
                 onToggleEdit={this.onToggleEdit}
                 onEditTask={this.onEditTask}
                 onEditTaskDesc= {this.onEditTaskDesc}
+                onToggleNewSubTask={this.onToggleNewSubTask}
+                onEditSubTask={this.onEditSubTask}
              />
             </Modal>  
           }
