@@ -7,7 +7,7 @@ import Dashboard from './Components/Dashboard';
 import Modal from './Components/Modal';
 import Task from './Components/Task';
 import Menu from './Components/Menu';
-import Project from './Components/Project';
+import ProjectList from './Components/ProjectList';
 
 class App extends Component {
   state = {
@@ -268,7 +268,8 @@ class App extends Component {
       <div className="App">
           <Header />
           <Menu/>
-          <Project projects={this.state.projects}/>
+          <ProjectList projects={this.state.projects}/>
+
           <Dashboard categories = {this.state.categories} 
                  tasks= {this.state.tasks}
                  subTasks={this.state.subTasks}

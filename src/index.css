@@ -105,3 +105,40 @@ body {
   float: left;
   padding: 5px;
 }
+
+.project-list {
+  position: relative;
+  list-style-type: none;
+  padding: 5px;
+}
+
+.project {
+  position: relative;
+  float: left;
+  min-height: 100px;
+  margin: 5px; 
+  padding: 5px;
+  border: 1px solid green;
+  width: 20%;
+}
+
+.project-list:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.project-header {
+
+}
+
+.project-body {
+  
+}
+
+.project-footer {
+  position: absolute;
+  bottom: 0;
+  text-transform: lowercase;
+  font-size: 0.7em;
+}
