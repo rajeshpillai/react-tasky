@@ -8,6 +8,7 @@ import Modal from './Components/Modal';
 import Task from './Components/Task';
 import Menu from './Components/Menu';
 import ProjectList from './Components/ProjectList';
+import Route from './Components/Router/Route';
 
 const uuidv4 = require('uuid/v4');
 
@@ -301,14 +302,9 @@ class App extends Component {
   render() {
     var task = this.state.task;
     var showAddTaskModal = this.state.showAddTaskModal;
-    
-    return (
-      <div className="App">
-          <Header />
-          <Menu/>
-          <ProjectList projects={this.state.projects}/>
 
-          <Dashboard categories = {this.state.categories} 
+    var projectList =  <ProjectList projects={this.state.projects}/>;
+    var dashboard =  (<Dashboard categories = {this.state.categories} 
                  tasks= {this.state.tasks}
                  subTasks={this.state.subTasks}
                  getUser={this.getUser}
@@ -326,12 +322,21 @@ class App extends Component {
                         onShowAddTaskModal={this.onShowAddTaskModal}
                         onToggleNewSubTask={this.onToggleNewSubTask}
                         onEditSubTask={this.onEditSubTask}
-          />
+          />);
+
+    return (
+      <div className="App">
+          <Header />
+          <Menu/>
+          <Route exact path="/" render={()=>projectList}/>
+          <Route path="/dashboard" render={() =>dashboard}/>
+
 
           {task && 
             <Modal show={this.state.isOpen} onClose={this.toggleModal}>
              <Task  task={task} modal={true}
                getUser={this.getUser}
+               getProject={this.getProject}
                subTasks={this.getSubTasks(task.id)}
                 onDeleteTask={this.onDeleteTask}
                 onToggleComplete={this.onToggleComplete}

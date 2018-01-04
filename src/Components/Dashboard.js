@@ -11,6 +11,13 @@ export default class Dashboard extends React.Component {
         categories: PropTypes.array.isRequired,
         tasks: PropTypes.array.isRequired
     }
+
+    componentDidCatch(error, info) {
+        console.log("Dashboard: ERROR: ", error, info);
+        // Display fallback UI
+        this.setState({ hasError: true });
+    }
+
     render() {
         var {categories, 
                 tasks, 

@@ -1,12 +1,12 @@
 import React from 'react';
+import Link from './Router/Link';
 
 const Menu = () => {
 	return (
 		<div className="main-menu">
 			<ul >
-				<li><a href="#">Projects</a></li>
-				<li><a href="#">Dashboard</a></li>
-				<li><a href="#">Admin</a></li>
+				<li><Link to="/">Projects</Link></li>
+				<li><Link to="/dashboard">Dashboard</Link></li>
 			</ul>
 		</div>
 	);

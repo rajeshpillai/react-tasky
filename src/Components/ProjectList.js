@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Project = (props) => {
+const ProjectList = (props) => {
 	var {projects} = props;
 
 	var projectView = projects.map((project) => {
@@ -20,4 +20,4 @@ const Project = (props) => {
 	);	
 }
 
-export default Project;
+export default ProjectList;
