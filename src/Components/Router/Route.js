@@ -72,8 +72,6 @@ export default class Route extends React.Component {
 			{path, exact}
 		);
 
-		console.log("Route:match():", match);
-
 		if (!match) {
 			return null;
 		}

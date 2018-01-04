@@ -89,14 +89,15 @@ class App extends Component {
     return project[0];
   }
 
-  onShowAddTaskModal = (cat = "todo") => {
-    this.toggleAddTaskModal(cat);
+  onShowAddTaskModal = (cat = "todo", projectId) => {
+    this.toggleAddTaskModal(cat,projectId);
   }
 
-  toggleAddTaskModal = (cat) => { 
+  toggleAddTaskModal = (cat, projectId) => { 
     this.setState({
       showAddTaskModal: !this.state.showAddTaskModal,
-      catForTask: cat
+      catForTask: cat,
+      projectForTask: projectId
     });
   }
 
@@ -121,7 +122,8 @@ class App extends Component {
     task.id = this.state.tasks.length + 1;
     task.category = this.state.catForTask;
     task.userId = "1"; // todo: hardcoded
-    task.projectId = this.state.projects[0].id;
+    task.projectId = this.state.projectForTask;
+
 
     this.setState({
       tasks: [task, ...this.state.tasks]
@@ -214,7 +216,7 @@ class App extends Component {
     var tasks = this.state.tasks;
 
     var tasks = tasks.filter((task) => {
-      if (task.id === id) {
+      if (task.id == id) {
         task.category = cat;
       }
       return task;
@@ -263,7 +265,7 @@ class App extends Component {
     var {subTasks,projects} = this.state;
     var tasks = [];
 
-    for(let p = 1; p <= 10; p++) {
+    for(let p = 1; p <= 5; p++) {
       var projectId = uuidv4();
       projects.push({
         id: projectId,
@@ -312,6 +314,7 @@ class App extends Component {
         });
         console.log("TASKS:PROJECTS: ", tasks);
         return(<Dashboard categories = {this.state.categories} 
+                 projectId={projectId}
                  tasks= {tasks}
                  subTasks={this.state.subTasks}
                  getUser={this.getUser}
@@ -363,7 +366,7 @@ class App extends Component {
 
           {showAddTaskModal && 
             <Modal show={showAddTaskModal} onClose={this.toggleAddTaskModal}>
-             <TaskForm onSubmit={this.onTaskSubmit} />
+             <TaskForm  onSubmit={this.onTaskSubmit} />
             </Modal>  
           }
 

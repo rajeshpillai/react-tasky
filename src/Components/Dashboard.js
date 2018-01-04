@@ -20,6 +20,7 @@ export default class Dashboard extends React.Component {
 
     render() {
         var {categories, 
+                projectId,
                 tasks, 
                 subTasks,
                 onDragover,
@@ -42,7 +43,7 @@ export default class Dashboard extends React.Component {
                     
                     <div className="category-header">
                         <span>{cat}</span>
-                        <a title="new task" onClick={(e)=>this.props.onShowAddTaskModal(cat)} href="#" className="task-add-icon">&#x002B;</a>
+                        <a title="new task" onClick={(e)=>this.props.onShowAddTaskModal(cat,projectId)} href="#" className="task-add-icon">&#x002B;</a>
                     </div>
 
                     <TaskList 
