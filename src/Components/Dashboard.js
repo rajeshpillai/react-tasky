@@ -23,8 +23,11 @@ export default class Dashboard extends React.Component {
                 tasks, 
                 subTasks,
                 onDragover,
-                onDrop
+                onDrop,
+                match
         } = this.props;
+
+        console.log("MATCH: ", match);
         
         var taskLists = categories.map((cat) => {
             var filteredTasks = tasks.filter((task) => {

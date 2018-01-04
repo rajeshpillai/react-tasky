@@ -305,8 +305,14 @@ class App extends Component {
     var showAddTaskModal = this.state.showAddTaskModal;
 
     var projectList =  <ProjectList projects={this.state.projects}/>;
-    var dashboard =  (<Dashboard categories = {this.state.categories} 
-                 tasks= {this.state.tasks}
+    var dashboard = (projectId) => {
+        console.log("PROJECT ID: ", projectId);
+        var tasks = this.state.tasks.filter((task) => {
+            return task.projectId === projectId;
+        });
+        console.log("TASKS:PROJECTS: ", tasks);
+        return(<Dashboard categories = {this.state.categories} 
+                 tasks= {tasks}
                  subTasks={this.state.subTasks}
                  getUser={this.getUser}
                  getProject={this.getProject}
@@ -323,14 +329,19 @@ class App extends Component {
                         onShowAddTaskModal={this.onShowAddTaskModal}
                         onToggleNewSubTask={this.onToggleNewSubTask}
                         onEditSubTask={this.onEditSubTask}
-          />);
+          />)};
 
     return (
       <div className="App">
           <Header />
           <Menu/>
           <Route exact path="/" render={()=>projectList}/>
-          <Route path="/dashboard" render={() =>dashboard}/>
+
+          {this.state.projects.map(({ title, id }) => (
+            <Route key={id} path={`/dashboard/${id}`} render={() => (
+               dashboard(id)
+            )} />
+          ))}
 
 
           {task && 
