@@ -258,7 +258,7 @@ class App extends Component {
     return (
       <div className="App">
           <Header />
-          <Menu />
+          <Menu/>
           <Dashboard categories = {this.state.categories} 
                  tasks= {this.state.tasks}
                  subTasks={this.state.subTasks}
