@@ -167,41 +167,25 @@ class App extends Component {
         markParentTask;
     var isAllSubTaskCompleted = false;
 
-    // var subTasks = this.state.subTasks.filter((subTask)=> {
-    //   if (subTask.id == subTaskId) {
-    //     subTask.completed = !subTask.completed;
-    //     taskId = subTask.taskId;
-    //     markParentTask = subTask.completed;
-    //   }
-    //   if (subTask.completed) {
-    //     isAllSubTaskCompleted = true;
-    //   } else {
-    //     isAllSubTaskCompleted = false;
-    //   }
-    //   return subTask;
-    // });
-
+    // Get all subtasks for the task
     var subTasks = this.state.subTasks.filter((s)=> {
-       return (s.taskId === taskId);
+      return (s.taskId === taskId);
     });
-
-    console.log("SUBTASKS: ", subTasks);
 
     subTasks = subTasks.filter((s)=> {
-      if (s.id == subTaskId) {
-        s.completed = !s.completed;
-        markParentTask = s.completed;
-      }
-      if (s.completed) {
-        isAllSubTaskCompleted = true;
-      } else {
-        isAllSubTaskCompleted = false;
-      }
-      return s;
+        if (s.id == subTaskId) {
+          s.completed = !s.completed;
+          markParentTask = s.completed;
+        }
+        if (s.completed) {
+          isAllSubTaskCompleted = true;
+        } else {
+          isAllSubTaskCompleted = false;
+        }
+        return s;
     });
 
-    console.log("ALL SUBTASK COMPLETED:", isAllSubTaskCompleted);
-
+    // Get the parent task model
     let task = this.state.tasks.find((t) => {
       return t.id == taskId;
     });
