@@ -37,9 +37,13 @@ class App extends Component {
     tasks: [
       {id: 1,userId:"1",projectId: "1",title: "Code a react app", completed: false, category: "inprogress"},
       {id: 2,userId:"1",projectId: "1", title: "Code a node app", completed: true, category: "inprogress"},
-      {id: 3,userId:"1",projectId: "1", title: "Code a full stack app", completed: true, category: "todo"},
+      {id: 3,userId:"1",projectId: "2", title: "Code a full stack app", completed: true, category: "todo"},
       {id: 4,userId:"2",projectId: "2", title: "Learn devops", completed: false, category: "todo"},
       {id: 5,userId:"2",projectId: "2",title: "Learn cloud computing", completed: true, category: "completed"},
+    ],
+    projectUsers: [
+      {projectId: 1, userId: 1},
+      {projectId: 1, userId: 1}
     ],
     subTask: {
       id: null,
@@ -334,7 +338,7 @@ class App extends Component {
   
   componentDidMount() {
     var {subTasks,projects} = this.state;
-    var tasks = [];
+    var tasks = this.state.tasks; //[];
 
     for(let p = 1; p <= 5; p++) {
       var projectId = uuidv4();
@@ -387,7 +391,7 @@ class App extends Component {
     var dashboard = (projectId) => {
         console.log("PROJECT ID: ", projectId);
         var tasks = this.state.tasks.filter((task) => {
-            return task.projectId === projectId;
+            return task.projectId == projectId;
         });
 
         console.log("TASKS:PROJECTS: ", tasks);
