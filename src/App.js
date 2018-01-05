@@ -163,7 +163,7 @@ class App extends Component {
   onToggleSubTask = (subTaskId) => {
     var subTasks = this.state.subTasks.filter((subTask)=> {
       if (subTask.id == subTaskId) {
-        subTask.complete = !subTask.complete;
+        subTask.completed = !subTask.completed;
       }
       return subTask;
     });
@@ -174,15 +174,23 @@ class App extends Component {
 
 
   onToggleComplete = (taskId) => {
+    var subTasks = this.state.subTasks;
     var tasks = this.state.tasks.map((task) => {
        if (task.id === taskId) {
          task.completed = !task.completed;
+
+         subTasks.map((subTask) => {
+            if (subTask.taskId === taskId) {
+              subTask.completed = task.completed;
+            }
+         });
        }
        return task;
     });
 
     this.setState({
-      tasks
+      tasks,
+      subTasks
     });
   }
 

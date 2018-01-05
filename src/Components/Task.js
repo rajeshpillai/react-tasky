@@ -14,6 +14,8 @@ const Task = (props) => {
 
     var subTasksView = subTasks.map((subTask) => {
         var edit = subTask.edit;
+
+        var subTaskchecked =  subTask.completed ? "checked" : "";
         return (
             <li key={subTask.id}>
               {edit ? <input type="text" title="enter to submit"  
@@ -31,9 +33,9 @@ const Task = (props) => {
                 /> 
                 : 
                 <div className="subtask-actions">
-                  <span className={subTask.complete?"task-completed":""}>{subTask.title}</span>
+                  <span className={subTask.completed?"task-completed":""}>{subTask.title}</span>
                   <button type="button" onClick={(e) =>{props.onDeleteSubTask(subTask.id)}}>&#x2716;</button>
-                  <input type="checkbox" onClick={(e)=>{props.onToggleSubTask(subTask.id)}} />
+                  <input type="checkbox" checked={subTaskchecked} onChange={(e)=>{props.onToggleSubTask(subTask.id)}} />
                 </div>
               }  
 

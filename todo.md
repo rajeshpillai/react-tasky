@@ -1,7 +1,6 @@
 In-progress
 ============
-12. Mark subtask as complete
-13. Subtask edit
+14. When all subtasks complete, task should be marked as complete and viceversa.
 
 
 Done
@@ -17,3 +16,5 @@ Done
 9.  Fixing dashboard rendering.  For sometimes empty panes are rendered.
 10. Pass project title to header
 11. Subtask delete
+12. Mark subtask as complete
+13. Subtask edit
