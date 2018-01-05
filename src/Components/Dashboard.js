@@ -12,6 +12,14 @@ export default class Dashboard extends React.Component {
         tasks: PropTypes.array.isRequired
     }
 
+    componentWillMount() {
+        console.log("Dashboard:willMount->", this.props);
+        this.props.setActiveProject(this.props.projectId);
+    }
+
+    componentDidMount() {
+        console.log("Dashboard:didMount->", this.props);
+    }
     componentDidCatch(error, info) {
         console.log("Dashboard: ERROR: ", error, info);
         // Display fallback UI

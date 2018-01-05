@@ -24,7 +24,7 @@ class App extends Component {
       title: null,
       status: "todo"
     },
-
+    projectId: "",
     projects: [
       {id: 1, title: "Angular eBook",status:"inprogress"},
       {id: 2, title: "React eBook",status:"inprogress"},
@@ -53,7 +53,8 @@ class App extends Component {
     categories: [
       "inprogress",
       "todo",
-      "completed"
+      "completed",
+      "backlog"
     ],
     users: [
       {id: 1, name: "Rajesh Pillai"},
@@ -87,6 +88,17 @@ class App extends Component {
     });
 
     return project[0];
+  }
+
+  setActiveProject = (projectId) => {
+    let project = this.state.projects.find((p) => {
+      return p.id == projectId;
+    });
+
+    this.setState({
+      projectId,
+      projectTitle: project.title
+    });
   }
 
   onShowAddTaskModal = (cat = "todo", projectId) => {
@@ -307,7 +319,10 @@ class App extends Component {
     var showAddTaskModal = this.state.showAddTaskModal;
     var projectId = this.state.projectId;
 
-    var projectList =  <ProjectList projects={this.state.projects}/>;
+    var project = this.getProject(projectId);
+
+    var projectList =  <ProjectList projectId={""}  projects={this.state.projects}/>;
+
     var dashboard = (projectId) => {
         console.log("PROJECT ID: ", projectId);
         var tasks = this.state.tasks.filter((task) => {
@@ -321,6 +336,7 @@ class App extends Component {
                  subTasks={this.state.subTasks}
                  getUser={this.getUser}
                  getProject={this.getProject}
+                 setActiveProject={this.setActiveProject}
                         onDeleteTask={this.onDeleteTask}
                         onToggleComplete={this.onToggleComplete}
                         onToggleEdit={this.onToggleEdit}
@@ -339,8 +355,10 @@ class App extends Component {
 
     return (
       <div className="App">
-          <Header projectId= {projectId} />
+          <Header projectId= {projectId} projectTitle={project && project.title} />
+          
           <Menu/>
+          
           <Route exact path="/" render={()=>projectList}/>
 
           {this.state.projects.map(({ title, id }) => (
