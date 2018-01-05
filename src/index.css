@@ -207,3 +207,7 @@ body {
   font-size: 0.7em;
 }
 
+.badge {
+  padding: 5px;
+  font-size: 0.8em;
+}

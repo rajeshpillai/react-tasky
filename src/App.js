@@ -36,14 +36,16 @@ class App extends Component {
     ],
     tasks: [
       {id: 1,userId:"1",projectId: "1",title: "Code a react app", completed: false, category: "inprogress"},
-      {id: 2,userId:"1",projectId: "1", title: "Code a node app", completed: true, category: "inprogress"},
+      {id: 2,userId:"2",projectId: "1", title: "Code a node app", completed: true, category: "inprogress"},
       {id: 3,userId:"1",projectId: "2", title: "Code a full stack app", completed: true, category: "todo"},
       {id: 4,userId:"2",projectId: "2", title: "Learn devops", completed: false, category: "todo"},
       {id: 5,userId:"2",projectId: "2",title: "Learn cloud computing", completed: true, category: "completed"},
     ],
     projectUsers: [
       {projectId: 1, userId: 1},
-      {projectId: 1, userId: 1}
+      {projectId: 1, userId: 2},
+      {projectId: 2, userId: 2},
+      {projectId: 2, userId: 1},
     ],
     subTask: {
       id: null,
@@ -103,6 +105,18 @@ class App extends Component {
       projectId,
       projectTitle: project.title
     });
+  }
+
+  getUsersByProject  = (projectId) => {
+    var projectUsers = this.state.projectUsers.filter((pu) => {
+        if (pu.projectId == projectId) {
+          return {
+            [pu.userId] :this.getUser(pu.userId)
+          }
+        }
+    });
+
+    return projectUsers;
   }
 
   onShowAddTaskModal = (cat = "todo", projectId) => {
@@ -337,7 +351,7 @@ class App extends Component {
   }
   
   componentDidMount() {
-    var {subTasks,projects} = this.state;
+    var {subTasks,projects,projectUsers} = this.state;
     var tasks = this.state.tasks; //[];
 
     for(let p = 1; p <= 5; p++) {
@@ -350,13 +364,20 @@ class App extends Component {
 
       for(let i = 1; i <= 5; i++) {
           var taskId = uuidv4();
+          var userId = (i%2) ? 1 : 2;
+
+          projectUsers.push({
+            projectId: projectId,
+            userId: userId
+          });
+
           tasks.push({
             id: taskId,
             title: `Task ${i}`,
             description: "Some random text " + i,
             projectId: projectId,
             category: (i%2) ? "inprogress": "todo",
-            userId: (i%2) ? 1 : 2
+            userId: userId
           });
           for(let j = 0; j < 5; j++) {
             subTasks.push({
@@ -372,7 +393,8 @@ class App extends Component {
     this.setState({
       tasks,
       subTasks,
-      projects
+      projects,
+      projectUsers
     });
 
   }
@@ -384,10 +406,12 @@ class App extends Component {
 
     var project = this.getProject(projectId);
 
-    var projectList =  <ProjectList projectId={""}  projects={this.state.projects}/>;
+    var projectList =  <ProjectList projectId={""}  
+                          projects={this.state.projects}
+                          getUsersByProject={this.getUsersByProject}/>;
+
     var userList =  <UserList  users={this.state.users}/>;
 
-    
     var dashboard = (projectId) => {
         console.log("PROJECT ID: ", projectId);
         var tasks = this.state.tasks.filter((task) => {
