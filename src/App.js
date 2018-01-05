@@ -9,6 +9,7 @@ import Task from './Components/Task';
 import Menu from './Components/Menu';
 import ProjectList from './Components/ProjectList';
 import Route from './Components/Router/Route';
+import UserList from './Components/UserList';
 
 const uuidv4 = require('uuid/v4');
 
@@ -380,7 +381,9 @@ class App extends Component {
     var project = this.getProject(projectId);
 
     var projectList =  <ProjectList projectId={""}  projects={this.state.projects}/>;
+    var userList =  <UserList  users={this.state.users}/>;
 
+    
     var dashboard = (projectId) => {
         console.log("PROJECT ID: ", projectId);
         var tasks = this.state.tasks.filter((task) => {
@@ -420,6 +423,7 @@ class App extends Component {
           <Menu/>
           
           <Route exact path="/" render={()=>projectList}/>
+          <Route exact path="/users" render={()=>userList}/>
 
           {this.state.projects.map(({ title, id }) => (
             <Route key={id} path={`/dashboard/${id}`} render={() => {
