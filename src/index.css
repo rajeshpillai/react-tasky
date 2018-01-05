@@ -4,9 +4,17 @@ body {
   font-family: sans-serif;
   background-color: IVORY;
 }
-.App {
+
+.container {
+  width:100%;
+}
+.app {
   width: 95%;
   margin: auto;
+}
+
+.app-header > h2{
+  margin-left: 1em;
 }
 
 .main-menu{

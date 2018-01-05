@@ -450,9 +450,9 @@ class App extends Component {
           )};
 
     return (
-      <div className="App">
-          <Header projectId= {projectId} projectTitle={project && project.title} />
-          
+      <div className="container">
+        <Header projectId= {projectId} projectTitle={project && project.title} />
+        <div className="app">
           <Menu/>
           
           <Route exact path="/" render={()=>projectList}/>
@@ -494,7 +494,7 @@ class App extends Component {
                 onToggleSubTask={this.onToggleSubTask}/>
             </Modal>  
           }
-
+        </div>
       </div>
     );
   }

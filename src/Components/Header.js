@@ -14,7 +14,7 @@ export default class Header extends React.Component {
     }
     render() {
         return (
-            <header>
+            <header class="app-header">
                 <h2>Tasky &#9728; {this.props.projectTitle || ""}</h2>
                 <hr/>
             </header>
