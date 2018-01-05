@@ -1,6 +1,9 @@
 In-progress
 ============
-9,  Fixing dashboard rendering.  For sometimes empty panes are rendered.
+11. Mark subtask as complete
+12. Subtask delete
+13. Subtask edit
+
 
 Done
 =====
@@ -12,3 +15,5 @@ Done
 6.  Add sub tasks
 7.  Add project feature
 8.  Add simple routing feature
+9.  Fixing dashboard rendering.  For sometimes empty panes are rendered.
+10. Pass project title to header

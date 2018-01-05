@@ -90,6 +90,15 @@ body {
   color: white
 }
 
+.subtask-actions {
+  margin-left: 10px;
+}
+.subtask-actions button{
+  border: none;
+  background: none;
+  color: red;
+}
+
 .main-menu{
   margin: 0;
   padding:0;

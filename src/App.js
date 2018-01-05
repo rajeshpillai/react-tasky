@@ -151,6 +151,15 @@ class App extends Component {
       tasks
     });
   }
+  onDeleteSubTask = (subTaskId) => {
+    var subTasks = this.state.subTasks.filter((subTask)=> {
+      return subTask.id != subTaskId;
+    });
+    this.setState({
+      subTasks
+    });
+  }
+
   onToggleComplete = (taskId) => {
     var tasks = this.state.tasks.map((task) => {
        if (task.id === taskId) {
@@ -350,6 +359,7 @@ class App extends Component {
                         onShowAddTaskModal={this.onShowAddTaskModal}
                         onToggleNewSubTask={this.onToggleNewSubTask}
                         onEditSubTask={this.onEditSubTask}
+                        onDeleteSubTask={this.onDeleteSubTask}
               />
           )};
 
@@ -383,13 +393,14 @@ class App extends Component {
                 onEditTaskDesc= {this.onEditTaskDesc}
                 onToggleNewSubTask={this.onToggleNewSubTask}
                 onEditSubTask={this.onEditSubTask}
+                onDeleteSubTask={this.onDeleteSubTask}
              />
             </Modal>  
           }
 
           {showAddTaskModal && 
             <Modal show={showAddTaskModal} onClose={this.toggleAddTaskModal}>
-             <TaskForm  onSubmit={this.onTaskSubmit} />
+             <TaskForm  onSubmit={this.onTaskSubmit} onDeleteSubTask={this.onDeleteSubTask} />
             </Modal>  
           }
 

@@ -17,24 +17,23 @@ const Task = (props) => {
         return (
             <li key={subTask.id}>
               {edit ? <input type="text" title="enter to submit"  
+                        placeholder="press esc to cancel"
                     onChange={(e)=>{props.onEditSubTask(e,subTask.id)}} 
-                    onKeyPress={(e) => {
+                    onKeyUp={(e) => {
                         console.log(e.which, e.keyCode);
                         if (e.which === 13) {
                             console.log("enter..");
                             props.onToggleNewSubTask(task.id, subTask.id)
-                        }
-                    }}
-
-                     onKeyUp={(e) => {
-                        console.log(e.which, e.keyCode);
-                        if (e.which === 27) {
+                        } else if (e.which === 27) {
                             props.onToggleNewSubTask(task.id, subTask.id);
                         }
                     }}
                 /> 
                 : 
-                subTask.title
+                <div className="subtask-actions">
+                  <span>{subTask.title}</span>
+                  <button type="button" onClick={(e) =>{props.onDeleteSubTask(subTask.id)}}>&#x2716;</button>
+                </div>
               }  
 
             </li>
