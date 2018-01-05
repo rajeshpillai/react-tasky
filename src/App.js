@@ -160,19 +160,64 @@ class App extends Component {
     });
   }
 
-  onToggleSubTask = (subTaskId) => {
-    var subTasks = this.state.subTasks.filter((subTask)=> {
-      if (subTask.id == subTaskId) {
-        subTask.completed = !subTask.completed;
-      }
-      return subTask;
+  // Toggle of subtask
+  onToggleSubTask = (subTask) => {
+    var taskId = subTask.taskId,
+        subTaskId = subTask.id,
+        markParentTask;
+    var isAllSubTaskCompleted = false;
+
+    // var subTasks = this.state.subTasks.filter((subTask)=> {
+    //   if (subTask.id == subTaskId) {
+    //     subTask.completed = !subTask.completed;
+    //     taskId = subTask.taskId;
+    //     markParentTask = subTask.completed;
+    //   }
+    //   if (subTask.completed) {
+    //     isAllSubTaskCompleted = true;
+    //   } else {
+    //     isAllSubTaskCompleted = false;
+    //   }
+    //   return subTask;
+    // });
+
+    var subTasks = this.state.subTasks.filter((s)=> {
+       return (s.taskId === taskId);
     });
+
+    console.log("SUBTASKS: ", subTasks);
+
+    subTasks = subTasks.filter((s)=> {
+      if (s.id == subTaskId) {
+        s.completed = !s.completed;
+        markParentTask = s.completed;
+      }
+      if (s.completed) {
+        isAllSubTaskCompleted = true;
+      } else {
+        isAllSubTaskCompleted = false;
+      }
+      return s;
+    });
+
+    console.log("ALL SUBTASK COMPLETED:", isAllSubTaskCompleted);
+
+    let task = this.state.tasks.find((t) => {
+      return t.id == taskId;
+    });
+
+    //if subtask has been unchecked, then parent should be unchecked, otherwise default.
+    task.completed = markParentTask == false? false: task.completed;
+    if (isAllSubTaskCompleted) {
+      task.completed = true;
+    }
     this.setState({
-      subTasks
+      subTasks,
+      task
     });
   }
 
-
+ // Toggle complete of Task
   onToggleComplete = (taskId) => {
     var subTasks = this.state.subTasks;
     var tasks = this.state.tasks.map((task) => {

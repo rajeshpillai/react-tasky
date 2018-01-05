@@ -35,7 +35,8 @@ const Task = (props) => {
                 <div className="subtask-actions">
                   <span className={subTask.completed?"task-completed":""}>{subTask.title}</span>
                   <button type="button" onClick={(e) =>{props.onDeleteSubTask(subTask.id)}}>&#x2716;</button>
-                  <input type="checkbox" checked={subTaskchecked} onChange={(e)=>{props.onToggleSubTask(subTask.id)}} />
+                  <input type="checkbox" checked={subTaskchecked} 
+                    onChange={(e)=>{props.onToggleSubTask(subTask)}} />
                 </div>
               }  
 

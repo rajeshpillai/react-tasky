@@ -1,6 +1,11 @@
 In-progress
 ============
-14. When all subtasks complete, task should be marked as complete and viceversa.
+
+
+
+Backlog
+========
+*Subtask edit
 
 
 Done
@@ -17,4 +22,8 @@ Done
 10. Pass project title to header
 11. Subtask delete
 12. Mark subtask as complete
-13. Subtask edit
+13. When all subtasks complete, task should be marked as complete and viceversa.
+14. When one of the subtask is marked as incomplete, then the task.complete should be set to false.
+15. When all subtasks is marked as complete the parent task should also be marked as complete.
+
+
