@@ -53,8 +53,7 @@ class App extends Component {
     categories: [
       "inprogress",
       "todo",
-      "completed",
-      "backlog"
+      "completed"
     ],
     users: [
       {id: 1, name: "Rajesh Pillai"},
@@ -196,7 +195,7 @@ class App extends Component {
       task.completed = true;
     }
     this.setState({
-      subTasks,
+      ...subTasks,
       task
     });
   }
