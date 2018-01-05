@@ -1,12 +1,19 @@
 In-progress
 ============
-*Style active top menu
+
 
 
 Backlog
 ========
 Subtask edit
-
+User management
+Authentication (*server/client)
+CRUD for categories
+CRUD for projects
+Add time/eta for task
+Add time/eta for subtask
+Task timer
+*Task notification
 
 
 Done
@@ -27,4 +34,4 @@ Done
 14. When one of the subtask is marked as incomplete, then the task.complete should be set to false.
 15. When all subtasks is marked as complete the parent task should also be marked as complete.
 16. *Add user list
-
+17. Style active top menu
