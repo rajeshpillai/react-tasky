@@ -6,6 +6,7 @@ const ProjectList = (props) => {
 
 	var projectView = projects.map((project) => {
 		var users = props.getUsersByProject(project.id);
+		var tasks = props.getProjectTasks(project.id);
 		console.log("Project Users: ", users);
 		return (
 			<li className="project" key={project.id}>
@@ -13,7 +14,8 @@ const ProjectList = (props) => {
 					<Link to={"/dashboard/" + project.id}>{project.title}</Link>
 				</div>
 				<div className="project-body">
-					<span className="badge"># Users: {users.length} </span>
+					<span className="badge badge-happy"># Users: {users.length} </span>
+					<span className="badge"># Tasks: {tasks.length} </span>
 				</div>
 
 				<div className="project-footer">&copy;</div>

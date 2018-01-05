@@ -208,6 +208,13 @@ body {
 }
 
 .badge {
-  padding: 5px;
+  padding: 2px;
+  display: inline-block;
   font-size: 0.8em;
+  border-radius: 2px;
+  margin:2px;
+}
+
+.badge-happy {
+  background-color: lightcoral;
 }

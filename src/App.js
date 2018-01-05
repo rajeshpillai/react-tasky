@@ -69,7 +69,6 @@ class App extends Component {
   }
 
   
-
   getUser = (userId) => {
     var users = this.state.users;
     var user = users.filter((user) => {
@@ -107,6 +106,13 @@ class App extends Component {
     });
   }
 
+  getProjectTasks = (projectId) => {
+    let projectTasks = this.state.tasks.filter((t) => {
+      return t.projectId == projectId;
+    });
+    return projectTasks;
+  }
+
   getUsersByProject  = (projectId) => {
     var projectUsers = this.state.projectUsers.filter((pu) => {
         if (pu.projectId == projectId) {
@@ -115,7 +121,6 @@ class App extends Component {
           }
         }
     });
-
     return projectUsers;
   }
 
@@ -134,8 +139,6 @@ class App extends Component {
   onShowTaskModal = (taskId) => {
     this.toggleModal(taskId);
   }
-
-  
 
   toggleModal = (taskId) => { 
     var task = this.state.tasks.filter((task) => {
@@ -408,7 +411,9 @@ class App extends Component {
 
     var projectList =  <ProjectList projectId={""}  
                           projects={this.state.projects}
-                          getUsersByProject={this.getUsersByProject}/>;
+                          getUsersByProject={this.getUsersByProject}
+                          getProjectTasks={this.getProjectTasks}
+                        />;
 
     var userList =  <UserList  users={this.state.users}/>;
 
