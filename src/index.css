@@ -8,6 +8,35 @@ body {
   width: 95%;
   margin: auto;
 }
+
+.main-menu{
+  margin: 0;
+  padding:0;
+}
+.main-menu  ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: inline-block;
+}
+
+.main-menu  ul > li {
+  float: left;
+  padding: 5px;
+}
+
+.main-menu ul a {
+  text-decoration: none;
+}
+
+.main-menu ul a:hover {
+  background-color: lightgray;
+}
+
+.menu-active {
+  border-bottom: 1px solid seagreen;
+}
+
 .remove-icon {
   color: red;
   padding: 2px;
@@ -99,29 +128,7 @@ body {
   color: red;
 }
 
-.main-menu{
-  margin: 0;
-  padding:0;
-}
-.main-menu  ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  display: inline-block;
-}
 
-.main-menu  ul > li {
-  float: left;
-  padding: 5px;
-}
-
-.main-menu ul a {
-  text-decoration: none;
-}
-
-.main-menu ul a:hover {
-  background-color: lightgray;
-}
 
 .project-list {
   position: relative;
@@ -160,3 +167,4 @@ body {
   text-transform: lowercase;
   font-size: 0.7em;
 }
+

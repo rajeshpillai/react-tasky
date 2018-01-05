@@ -1,11 +1,12 @@
 In-progress
 ============
-*Add user list
+*Style active top menu
 
 
 Backlog
 ========
-*Subtask edit
+Subtask edit
+
 
 
 Done
@@ -25,5 +26,5 @@ Done
 13. When all subtasks complete, task should be marked as complete and viceversa.
 14. When one of the subtask is marked as incomplete, then the task.complete should be set to false.
 15. When all subtasks is marked as complete the parent task should also be marked as complete.
-
+16. *Add user list
 

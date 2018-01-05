@@ -16,13 +16,15 @@ export default class Link extends React.Component {
 		event.preventDefault();
 
 		replace ? RouteHelper.historyReplace(to) : RouteHelper.historyPush(to);
+		
+		this.props.onClick && this.props.onClick(event, to);
 	}
 
 	render() {
 		const {to, children} = this.props;
 
 		return (
-			<a href={to} onClick={this.handleClick} >
+			<a href={to} {...this.props} onClick={this.handleClick} >
 				{children}
 			</a>
 		);
